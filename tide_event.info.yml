@@ -1,0 +1,10 @@
+name: Tide Event
+description: 'Provides Event content type and related configuration. '
+type: module
+package: Tide
+core: 8.x
+dependencies:
+  - dpc-sdp:tide_core
+config_devel:
+  install:
+  optional:

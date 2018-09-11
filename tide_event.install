@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Install file.
+ */
+
+use Drupal\user\Entity\Role;
+use Drupal\workflows\Entity\Workflow;
+
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for Tide profile Profile.
+ *
+ * @see system_install()
+ */
+function tide_event_install() {
+  // Don't do anything else during config sync.
+  if (\Drupal::isConfigSyncing()) {
+    return;
+  }
+
+  // Enable Editorial workflow if workflow module is enabled.
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('workflows')) {
+    $editorial_workflow = Workflow::load('editorial');
+    if ($editorial_workflow) {
+      $editorial_workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'event');
+      $editorial_workflow->save();
+    }
+  }
+}
+/**
+ * Implements hook_uninstall().
+ */
+function tide_event_uninstall() {
+  // Remove permissions on Test content type to Approver and Editor.
+  $roles = ['approver', 'editor'];
+  $permissions = [
+    'create event content',
+    'delete any event content',
+    'delete own event content',
+    'delete event revisions',
+    'edit any event content',
+    'edit own event content',
+    'revert event revisions',
+    'view event revisions',
+  ];
+
+  foreach ($roles as $role_name) {
+    $role = Role::load($role_name);
+    if ($role) {
+      foreach ($permissions as $permission) {
+        $role->revokePermission($permission);
+      }
+      $role->save();
+    }
+  }
+}

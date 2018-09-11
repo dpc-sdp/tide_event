@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Tide Event module functionality.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\tide_site\TideSiteFields;
+use Drupal\user\Entity\Role;
+use Drupal\workflows\Entity\Workflow;
+
+/**
+ * Implements hook_entity_bundle_create().
+ */
+function tide_test_entity_bundle_create($entity_type_id, $bundle) {
+  if ($entity_type_id == 'node' && $bundle == 'event') {
+    // Grant permissions on Test content type to Approver and Editor.
+    $roles = ['approver', 'editor'];
+    $permissions = [
+      'create event content',
+      'delete any event content',
+      'delete own event content',
+      'delete event revisions',
+      'edit any event content',
+      'edit own event content',
+      'revert event revisions',
+      'view event revisions',
+    ];
+
+    foreach ($roles as $role_name) {
+      $role = Role::load($role_name);
+      if ($role) {
+        foreach ($permissions as $permission) {
+          $role->grantPermission($permission);
+        }
+        $role->save();
+      }
+    }
+
+    // Enable Editorial workflow.
+    $editorial_workflow = Workflow::load('editorial');
+    if ($editorial_workflow) {
+      $editorial_workflow->getTypePlugin()->addEntityTypeAndBundle($entity_type_id, $bundle);
+      $editorial_workflow->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_modules_installed().
+ */
+function tide_event_modules_installed($modules) {
+  module_set_weight('tide_event', 1000);
+
+  // Invoke hook_entity_bundle_create again so that other modules can change
+  // entity form display of the `test` content type which was reverted by
+  // default config import during module installation.
+  if (!\Drupal::service('config.installer')->isSyncing() && in_array('tide_event', $modules)) {
+    /** @var \Drupal\Core\Extension\ModuleHandler $moduleHandler */
+    $moduleHandler = \Drupal::service('module_handler');
+    $moduleHandler->invokeAll('entity_bundle_create', ['node', 'event']);
+  }
+}

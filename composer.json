@@ -1,0 +1,25 @@
+{
+    "name": "dpc-sdp/tide_test",
+    "description": "Test content type and related configuration for Tide Drupal 8 distribution",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "require": {
+        "drupal/smart_trim": "^1.1",
+        "dpc-sdp/tide_core": "@dev"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "7.1"
+        },
+        "process-timeout": 0,
+        "sort-packages": true
+    }
+}
