@@ -59,6 +59,6 @@ function tide_event_modules_installed($modules) {
   if (!\Drupal::service('config.installer')->isSyncing() && in_array('tide_event', $modules)) {
     /** @var \Drupal\Core\Extension\ModuleHandler $moduleHandler */
     $moduleHandler = \Drupal::service('module_handler');
-    $moduleHandler->invokeAll('entity_bundle_create', ['node', 'event']);
+    //$moduleHandler->invokeAll('entity_bundle_create', ['node', 'event']);
   }
 }
