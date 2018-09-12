@@ -7,4 +7,5 @@ dependencies:
   - dpc-sdp:tide_core
 config_devel:
   install:
+    - taxonomy.vocabulary.event.yml
   optional:
