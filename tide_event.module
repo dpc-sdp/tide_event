@@ -13,7 +13,7 @@ use Drupal\workflows\Entity\Workflow;
 /**
  * Implements hook_entity_bundle_create().
  */
-function tide_test_entity_bundle_create($entity_type_id, $bundle) {
+function tide_event_entity_bundle_create($entity_type_id, $bundle) {
   if ($entity_type_id == 'node' && $bundle == 'event') {
     // Grant permissions on Test content type to Approver and Editor.
     $roles = ['approver', 'editor'];
@@ -54,7 +54,7 @@ function tide_event_modules_installed($modules) {
   module_set_weight('tide_event', 1000);
 
   // Invoke hook_entity_bundle_create again so that other modules can change
-  // entity form display of the `test` content type which was reverted by
+  // entity form display of the `event` content type which was reverted by
   // default config import during module installation.
   if (!\Drupal::service('config.installer')->isSyncing() && in_array('tide_event', $modules)) {
     /** @var \Drupal\Core\Extension\ModuleHandler $moduleHandler */

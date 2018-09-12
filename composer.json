@@ -1,6 +1,6 @@
 {
-    "name": "dpc-sdp/tide_test",
-    "description": "Test content type and related configuration for Tide Drupal 8 distribution",
+    "name": "dpc-sdp/tide_event",
+    "description": "Event content type and related configuration for Tide Drupal 8 distribution",
     "type": "drupal-module",
     "license": "GPL-2.0+",
     "require": {
