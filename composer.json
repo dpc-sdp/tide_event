@@ -5,7 +5,7 @@
     "license": "GPL-2.0+",
     "require": {
         "drupal/smart_trim": "^1.1",
-        "dpc-sdp/tide_core": "@dev"
+        "dpc-sdp/tide_core": "dev-feature/SDPA-904-event-content-type"
     },
     "repositories": {
         "drupal": {
