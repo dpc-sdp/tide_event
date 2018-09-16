@@ -6,6 +6,7 @@ core: 8.x
 dependencies:
   - dpc-sdp:tide_core
   - drupal:datetime_range
+  - drupal:menu_ui
 config_devel:
   install:
     - taxonomy.vocabulary.event
