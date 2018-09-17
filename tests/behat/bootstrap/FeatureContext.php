@@ -1,10 +1,8 @@
 <?php
-
 /**
  * @file
  * MYSITE Drupal context for Behat testing.
  */
-
 use Drupal\DrupalExtension\Context\DrupalContext;
 use IntegratedExperts\BehatSteps\FieldTrait;
 use IntegratedExperts\BehatSteps\LinkTrait;
@@ -14,12 +12,10 @@ use IntegratedExperts\BehatSteps\D8\ContentTrait;
 use IntegratedExperts\BehatSteps\D8\MediaTrait;
 use IntegratedExperts\BehatSteps\D8\MenuTrait;
 use IntegratedExperts\BehatSteps\D8\TaxonomyTrait;
-
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext extends DrupalContext {
-
   use LinkTrait;
   use PathTrait;
   use FieldTrait;
@@ -29,5 +25,4 @@ class FeatureContext extends DrupalContext {
   use TaxonomyTrait;
   use ResponseTrait;
   use TideCommonTrait;
-
 }

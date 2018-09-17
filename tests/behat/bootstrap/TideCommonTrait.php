@@ -1,10 +1,8 @@
 <?php
-
 /**
  * Trait TideTrait.
  */
 trait TideCommonTrait {
-
   /**
    * @Then I am in the :path path
    */
@@ -13,12 +11,10 @@ trait TideCommonTrait {
     $current_path = parse_url($current_path, PHP_URL_PATH);
     $current_path = ltrim($current_path, '/');
     $current_path = $current_path == '' ? '<front>' : $current_path;
-
     if ($current_path != $path) {
       throw new \Exception(sprintf('Current path is "%s", but expected is "%s"', $current_path, $path));
     }
   }
-
   /**
    * Creates and authenticates a user with the given role(s).
    *
@@ -39,14 +35,12 @@ trait TideCommonTrait {
       parent::assertAuthenticatedByRole($role);
     }
   }
-
   /**
    * @Then I wait for :sec second(s)
    */
   public function waitForSeconds($sec) {
     sleep($sec);
   }
-
   /**
    * @Given no :type content type
    */
@@ -56,5 +50,4 @@ trait TideCommonTrait {
       $content_type_entity->delete();
     }
   }
-
 }
