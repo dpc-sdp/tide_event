@@ -6,8 +6,8 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_audience
     - field.field.node.event.field_event_category
-    - field.field.node.event.field_event_date_range
     - field.field.node.event.field_event_description
+    - field.field.node.event.field_event_details
     - field.field.node.event.field_featured_image
     - field.field.node.event.field_landing_page_show_contact
     - field.field.node.event.field_news_intro_text
@@ -17,7 +17,7 @@ dependencies:
     - field.field.node.event.field_topic
     - node.type.event
   module:
-    - datetime_range
+    - entity_reference_revisions
     - text
     - user
 id: node.event.default
@@ -53,22 +53,21 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_event_date_range:
-    weight: 8
-    label: above
-    settings:
-      separator: '-'
-      format_type: medium
-      timezone_override: ''
-    third_party_settings: {  }
-    type: daterange_default
-    region: content
   field_event_description:
     weight: 7
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_event_details:
+    type: entity_reference_revisions_entity_view
+    weight: 10
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   field_featured_image:
     weight: 3
@@ -79,7 +78,7 @@ content:
     type: entity_reference_label
     region: content
   field_landing_page_show_contact:
-    weight: 10
+    weight: 11
     label: above
     settings:
       format: default
@@ -96,7 +95,7 @@ content:
     type: basic_string
     region: content
   field_show_social_sharing:
-    weight: 11
+    weight: 12
     label: above
     settings:
       format: default

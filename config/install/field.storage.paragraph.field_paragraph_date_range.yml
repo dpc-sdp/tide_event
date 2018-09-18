@@ -1,13 +1,13 @@
-uuid: c0e805b1-e14a-402e-9993-ef3f0bbe05d2
+uuid: 583a28e4-3f99-484f-b429-15787610c055
 langcode: en
 status: true
 dependencies:
   module:
     - datetime_range
-    - node
-id: node.field_event_date_range
-field_name: field_event_date_range
-entity_type: node
+    - paragraphs
+id: paragraph.field_paragraph_date_range
+field_name: field_paragraph_date_range
+entity_type: paragraph
 type: daterange
 settings:
   datetime_type: datetime
