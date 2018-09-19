@@ -1,3 +1,4 @@
+uuid: 943f8f85-0fee-4c24-813c-23b02e3f9bd0
 langcode: en
 status: true
 dependencies:
@@ -10,7 +11,7 @@ dependencies:
 third_party_settings:
   allowed_formats:
     rich_text: rich_text
-    admin_text: '0'
+    admin_text: admin_text
     plain_text: '0'
 id: node.event.field_event_description
 field_name: field_event_description
