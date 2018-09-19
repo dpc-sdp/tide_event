@@ -4,9 +4,10 @@ type: module
 package: Tide
 core: 8.x
 dependencies:
-  - dpc-sdp:tide_core
   - drupal:datetime_range
   - drupal:menu_ui
+  - dpc-sdp:tide_core
+  - dpc-sdp:tide_media
 config_devel:
   install:
     - taxonomy.vocabulary.event
