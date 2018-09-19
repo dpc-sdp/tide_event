@@ -32,8 +32,8 @@ Feature: Fields for News content type
     And I should not see an "textarea#edit-field-news-intro-text-0-value.required" element
 
     And I see field "Description"
-    And I should see a "textarea#edit-event-description-0-value" element
-    And I should not see a "textarea#edit-event-description-0-value.required" element
+    And I should see a "textarea#edit-field-event-description-0-value" element
+    And I should not see a "textarea#edit-field-event-description-0-value.required" element
 
     And I see field "Show Social Sharing?"
     And I should see an "input#edit-field-show-social-sharing-value" element
