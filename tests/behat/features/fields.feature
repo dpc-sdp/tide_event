@@ -1,5 +1,5 @@
 @tide
-Feature: Fields for News content type
+Feature: Fields for Event content type
 
   Ensure that Event content has the expected fields.
 
