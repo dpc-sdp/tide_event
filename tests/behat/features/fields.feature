@@ -31,6 +31,10 @@ Feature: Fields for Event content type
     And I should see an "textarea#edit-field-news-intro-text-0-value" element
     And I should not see an "textarea#edit-field-news-intro-text-0-value.required" element
 
+    And I see field "Summary"
+    And I should see a "textarea#edit-field-landing-page-summary-0-value" element
+    And I should see a "textarea#edit-field-landing-page-summary-0-value.required" element
+
     And I see field "Description"
     And I should see a "textarea#edit-field-event-description-0-value" element
     And I should not see a "textarea#edit-field-event-description-0-value.required" element
