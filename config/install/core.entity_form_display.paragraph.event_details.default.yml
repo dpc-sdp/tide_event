@@ -21,7 +21,7 @@ bundle: event_details
 mode: default
 content:
   field_event_requirements:
-    weight: 2
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -36,7 +36,7 @@ content:
     type: daterange_default
     region: content
   field_paragraph_event_price_from:
-    weight: 3
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -44,7 +44,7 @@ content:
     type: string_textfield
     region: content
   field_paragraph_event_price_to:
-    weight: 4
+    weight: 3
     settings:
       size: 60
       placeholder: ''

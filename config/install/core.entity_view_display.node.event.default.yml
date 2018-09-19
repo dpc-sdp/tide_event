@@ -62,7 +62,7 @@ content:
     region: content
   field_event_details:
     type: entity_reference_revisions_entity_view
-    weight: 10
+    weight: 8
     label: above
     settings:
       view_mode: default
@@ -78,7 +78,7 @@ content:
     type: entity_reference_label
     region: content
   field_landing_page_show_contact:
-    weight: 11
+    weight: 10
     label: above
     settings:
       format: default
@@ -95,7 +95,7 @@ content:
     type: basic_string
     region: content
   field_show_social_sharing:
-    weight: 12
+    weight: 11
     label: above
     settings:
       format: default
