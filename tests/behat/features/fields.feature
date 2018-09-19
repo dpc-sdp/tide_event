@@ -39,9 +39,9 @@ Feature: Fields for News content type
     And I should see an "input#edit-field-show-social-sharing-value" element
     And I should not see an "input#edit-field-show-social-sharing-value.required" element
 
-    And I see field "Show Related Content?"
-    And I should see an "input#edit-field-show-related-content-value" element
-    And I should not see an "input#edit-field-show-related-content-value.required" element
+    And I see field " Show Contact Us?"
+    And I should see an "input#edit-field-landing-page-show-contact-value" element
+    And I should not see an "input#edit-field-landing-page-show-contact-value.required" element
 
     And the "#edit-field-featured-image" element should contain "Featured Image"
     And I should see an "input#edit-field-featured-image-entity-browser-entity-browser-open-modal" element
