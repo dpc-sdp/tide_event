@@ -27,9 +27,6 @@ Feature: Fields for News content type
     And I should see an "input#edit-field-audience-0-target-id" element
     And I should not see an "input#edit-field-audience-0-target-id.required" element
 
-    And the "#edit-field-featured-image" element should contain "Featured Image"
-    And I should see an "input#edit-field-featured-image-entity-browser-entity-browser-open-modal" element
-
     And I see field "Introduction Text"
     And I should see an "textarea#edit-field-news-intro-text-0-value" element
     And I should not see an "textarea#edit-field-news-intro-text-0-value.required" element
@@ -45,3 +42,7 @@ Feature: Fields for News content type
     And I see field "Show Related Content?"
     And I should see an "input#edit-field-show-related-content-value" element
     And I should not see an "input#edit-field-show-related-content-value.required" element
+
+    And the "#edit-field-featured-image" element should contain "Featured Image"
+    And I should see an "input#edit-field-featured-image-entity-browser-entity-browser-open-modal" element
+
