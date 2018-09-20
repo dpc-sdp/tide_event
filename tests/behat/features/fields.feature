@@ -17,11 +17,11 @@ Feature: Fields for Event content type
 
     And I see field "Topic"
     And I should see an "input#edit-field-topic-0-target-id" element
-    And I should not see an "input#edit-field-topic-0-target-id.required" element
+    And I should see an "input#edit-field-topic-0-target-id.required" element
 
     And I see field "Event Category"
     And I should see an "input#edit-field-event-category-0-target-id" element
-    And I should not see an "input#edit-field-event-category-0-target-id.required" element
+    And I should see an "input#edit-field-event-category-0-target-id.required" element
 
     And I see field "Audience"
     And I should see an "input#edit-field-audience-0-target-id" element
