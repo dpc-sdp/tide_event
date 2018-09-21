@@ -22,6 +22,8 @@ function tide_event_install() {
     return;
   }
 
+  _tide_event_add_fields_search_api();
+  
   // Enable Editorial workflow if workflow module is enabled.
   /*$moduleHandler = \Drupal::service('module_handler');
   if ($moduleHandler->moduleExists('workflows')) {
@@ -57,5 +59,36 @@ function tide_event_uninstall() {
       }
       $role->save();
     }
+  }
+}
+
+/**
+ * Add fields to Search API.
+ */
+function _tide_event_add_fields_search_api() {
+
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('tide_search')) {
+    $index_storage = \Drupal::entityTypeManager()
+      ->getStorage('search_api_index');
+    $index = $index_storage->load('node');
+
+    // Index start date of event date field.
+    $field_start_date = new Field($index, 'field_paragraph_date_range');
+    $field_start_date->setType('date');
+    $field_start_date->setPropertyPath('field_event_details:entity:field_paragraph_date_range');
+    $field_start_date->setDatasourceId('entity:node');
+    $field_start_date->setLabel('Event Details » Paragraph » Date Range');
+    $index->addField($field_start_date);
+
+    // Index end date of the event date field.
+    $field_end_date = new Field($index, 'end_value');
+    $field_end_date->setType('date');
+    $field_end_date->setPropertyPath('field_event_details:entity:field_paragraph_date_range:end_value');
+    $field_end_date->setDatasourceId('entity:node');
+    $field_end_date->setLabel('Event Details » Paragraph » Date Range » End date value');
+    $index->addField($field_end_date);
+
+    $index->save();
   }
 }
