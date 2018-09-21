@@ -35,9 +35,9 @@ aliases:
       - run:
           name: Install dev dependencies
           command: make install
-      - run:
-          name: Lint code
-          command: make lint
+      #- run:
+      #    name: Lint code
+      #    command: make lint
       - run:
           name: Prepare test fixtures
           command: make install-site

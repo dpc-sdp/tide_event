@@ -5,4 +5,4 @@ Feature: Check the Event taxonomy
 
   @api
   Scenario: Event taxonomy exists
-    Given vocabulary "event" with name "Event" exists
+    Given vocabulary "event" with name "Event Category" exists
