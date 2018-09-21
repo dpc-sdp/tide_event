@@ -62,3 +62,49 @@ function tide_event_modules_installed($modules) {
     //$moduleHandler->invokeAll('entity_bundle_create', ['node', 'event']);
   }
 }
+
+/**
+ * Implements hook_search_api_index_items_alter()
+ *
+ * @param \Drupal\search_api\IndexInterface $index
+ *   The search index on which items will be indexed.
+ * @param \Drupal\search_api\Item\ItemInterface[] $items
+ *   The items that will be indexed.
+ */
+function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterface $index, array &$items) {
+  foreach ($items as $item_id => $item) {
+
+    // Format start date of a date range.
+    $start_date = $item->getField('field_paragraph_date_range');
+    if (!empty($start_date)) {
+      $value = $start_date->getValues();
+      $start_date->setValues([_get_formatted_date($value[0])]);
+      $item->setField("field_paragraph_date_range", $start_date);
+    }
+
+    // Format end date of a date range.
+    $end_date = $item->getField('end_value');
+    if (!empty($end_date)) {
+      $value = $end_date->getValues();
+      $end_date->setValues([_get_formatted_date($value[0])]);
+      $item->setField("end_value", $end_date);
+    }
+  }
+}
+
+/**
+ * Converts timestamp to RFC-3339 format.
+ *
+ * @param int $ts
+ *   Timestamp.
+ * @return string
+ *   Formatted date.
+ */
+function _get_formatted_date($ts) {
+  $config = \Drupal::config('system.date');
+  $timezone = new DateTimeZone($config->get('timezone.default'));
+  $date = new \Datetime();
+  $date->setTimezone($timezone);
+  $date = $date->setTimestamp($ts);
+  return $date->format("Y-m-d\TH:i:sP");
+}

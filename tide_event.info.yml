@@ -12,3 +12,4 @@ config_devel:
   install:
     - taxonomy.vocabulary.event
   optional:
+    - jsonapi_extras.jsonapi_resource_config.paragraph--event_details
