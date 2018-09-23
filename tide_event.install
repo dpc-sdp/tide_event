@@ -62,10 +62,9 @@ function tide_event_uninstall() {
 
 
 /**
- * Delete temporary fields. [SDPA-982].
+ * Enable Editorial workflow if workflow module is enabled. [SDPA-982].
  */
 function tide_event_update_8001() {
-  // Enable Editorial workflow if workflow module is enabled.
   $moduleHandler = \Drupal::service('module_handler');
   if ($moduleHandler->moduleExists('workflows')) {
     $editorial_workflow = Workflow::load('editorial');
