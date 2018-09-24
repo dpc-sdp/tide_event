@@ -78,7 +78,7 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
     $start_date = $item->getField('field_paragraph_date_range');
     if (!empty($start_date)) {
       $value = $start_date->getValues();
-      $start_date->setValues([_get_formatted_date($value[0])]);
+      $start_date->setValues([_tide_event_get_formatted_date($value[0])]);
       $item->setField("field_paragraph_date_range", $start_date);
     }
 
@@ -86,7 +86,7 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
     $end_date = $item->getField('end_value');
     if (!empty($end_date)) {
       $value = $end_date->getValues();
-      $end_date->setValues([_get_formatted_date($value[0])]);
+      $end_date->setValues([_tide_event_get_formatted_date($value[0])]);
       $item->setField("end_value", $end_date);
     }
   }
@@ -100,7 +100,7 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
  * @return string
  *   Formatted date.
  */
-function _get_formatted_date($ts) {
+function _tide_event_get_formatted_date($ts) {
   $config = \Drupal::config('system.date');
   $timezone = new DateTimeZone($config->get('timezone.default'));
   $date = new \Datetime();
