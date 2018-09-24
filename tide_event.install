@@ -6,8 +6,7 @@
  */
 
 use Drupal\user\Entity\Role;
-use Drupal\workflows\Entity\Workflow;
-
+use Drupal\search_api\Item\Field;
 
 /**
  * Implements hook_install().
