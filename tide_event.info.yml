@@ -12,4 +12,6 @@ config_devel:
   install:
     - taxonomy.vocabulary.event
     - field.field.node.event.field_tags
+    - field.field.node.event.scheduled_archiving
+    - field.field.node.event.scheduled_publishing
   optional:

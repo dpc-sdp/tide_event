@@ -23,14 +23,14 @@ function tide_event_install() {
   }
 
   // Enable Editorial workflow if workflow module is enabled.
-  /*$moduleHandler = \Drupal::service('module_handler');
+  $moduleHandler = \Drupal::service('module_handler');
   if ($moduleHandler->moduleExists('workflows')) {
     $editorial_workflow = Workflow::load('editorial');
     if ($editorial_workflow) {
       $editorial_workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'event');
       $editorial_workflow->save();
     }
-  }*/
+  }
 }
 /**
  * Implements hook_uninstall().
@@ -56,6 +56,21 @@ function tide_event_uninstall() {
         $role->revokePermission($permission);
       }
       $role->save();
+    }
+  }
+}
+
+
+/**
+ * Enable Editorial workflow if workflow module is enabled. [SDPA-982].
+ */
+function tide_event_update_8001() {
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('workflows')) {
+    $editorial_workflow = Workflow::load('editorial');
+    if ($editorial_workflow) {
+      $editorial_workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'event');
+      $editorial_workflow->save();
     }
   }
 }
