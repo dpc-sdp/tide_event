@@ -50,3 +50,7 @@ Feature: Fields for Event content type
     And the "#edit-field-featured-image" element should contain "Featured Image"
     And I should see an "input#edit-field-featured-image-entity-browser-entity-browser-open-modal" element
 
+    And I see field "Tags"
+    And I should see an "input#edit-field-tags-0-target-id" element
+    And I should not see an "input#edit-field-tags-0-target-id.required" element
+
