@@ -6,6 +6,7 @@
  */
 
 use Drupal\user\Entity\Role;
+use Drupal\workflows\Entity\Workflow;
 use Drupal\search_api\Item\Field;
 
 /**
@@ -22,16 +23,16 @@ function tide_event_install() {
   }
 
   _tide_event_add_fields_search_api();
-  
+
   // Enable Editorial workflow if workflow module is enabled.
-  /*$moduleHandler = \Drupal::service('module_handler');
+  $moduleHandler = \Drupal::service('module_handler');
   if ($moduleHandler->moduleExists('workflows')) {
     $editorial_workflow = Workflow::load('editorial');
     if ($editorial_workflow) {
       $editorial_workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'event');
       $editorial_workflow->save();
     }
-  }*/
+  }
 }
 /**
  * Implements hook_uninstall().
@@ -89,5 +90,19 @@ function _tide_event_add_fields_search_api() {
     $index->addField($field_end_date);
 
     $index->save();
+  }
+}
+
+/**
+ * Enable Editorial workflow if workflow module is enabled. [SDPA-982].
+ */
+function tide_event_update_8001() {
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('workflows')) {
+    $editorial_workflow = Workflow::load('editorial');
+    if ($editorial_workflow) {
+      $editorial_workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'event');
+      $editorial_workflow->save();
+    }
   }
 }
