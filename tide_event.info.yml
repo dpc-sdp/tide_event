@@ -14,3 +14,4 @@ config_devel:
     - field.field.node.event.scheduled_archiving
     - field.field.node.event.scheduled_publishing
   optional:
+    - jsonapi_extras.jsonapi_resource_config.paragraph--event_details
