@@ -121,6 +121,54 @@ function _tide_event_add_fields_search_api() {
     $field_event_intro_text->setLabel('Event Introduction Text');
     $index->addField($field_event_intro_text);
 
+    // Index field_event_description field.
+    $field_event_description = new Field($index, 'field_event_description');
+    $field_event_description->setType('text');
+    $field_event_description->setPropertyPath('field_event_description');
+    $field_event_description->setDatasourceId('entity:node');
+    $field_event_description->setLabel('Event Description');
+    $index->addField($field_event_description);
+
+    // Index field_event_details_event_address_1 field.
+    $field_event_details_event_address_1 = new Field($index, 'field_event_details_event_address_1');
+    $field_event_details_event_address_1->setType('text');
+    $field_event_details_event_address_1->setPropertyPath('field_event_details:entity:field_paragraph_location:address_line1');
+    $field_event_details_event_address_1->setDatasourceId('entity:node');
+    $field_event_details_event_address_1->setLabel('Event Details » Location »  The first line of the address block');
+    $index->addField($field_event_details_event_address_1);
+
+    // Index field_event_details_event_address_line2 field.
+    $field_event_details_event_address_2 = new Field($index, 'field_event_details_event_address_line2');
+    $field_event_details_event_address_2->setType('text');
+    $field_event_details_event_address_2->setPropertyPath('field_event_details:entity:field_paragraph_location:address_line2');
+    $field_event_details_event_address_2->setDatasourceId('entity:node');
+    $field_event_details_event_address_2->setLabel('Event Details » Location »  The second line of the address block');
+    $index->addField($field_event_details_event_address_2);
+
+    // Index field_event_details_event_administrative_area field.
+    $field_event_details_event_administrative_area = new Field($index, 'field_event_details_event_administrative_area');
+    $field_event_details_event_administrative_area->setType('text');
+    $field_event_details_event_administrative_area->setPropertyPath('field_event_details:entity:field_paragraph_location:administrative_area');
+    $field_event_details_event_administrative_area->setDatasourceId('entity:node');
+    $field_event_details_event_administrative_area->setLabel('Event Details » Location » The top-level administrative subdivision of the country');
+    $index->addField($field_event_details_event_administrative_area);
+
+    // Index field_event_details_event_locality field.
+    $field_event_details_event_locality = new Field($index, 'field_event_details_event_locality');
+    $field_event_details_event_locality->setType('text');
+    $field_event_details_event_locality->setPropertyPath('field_event_details:entity:field_paragraph_location:locality');
+    $field_event_details_event_locality->setDatasourceId('entity:node');
+    $field_event_details_event_locality->setLabel('Event Details » Location » The locality');
+    $index->addField($field_event_details_event_locality);
+
+    // Index field_event_details_event_postal_code field.
+    $field_event_details_event_postal_code = new Field($index, 'field_event_details_event_postal_code');
+    $field_event_details_event_postal_code->setType('text');
+    $field_event_details_event_postal_code->setPropertyPath('field_event_details:entity:field_paragraph_location:postal_code');
+    $field_event_details_event_postal_code->setDatasourceId('entity:node');
+    $field_event_details_event_postal_code->setLabel('Event Details » Location » The postal code');
+    $index->addField($field_event_details_event_postal_code);
+
     $index->save();
   }
 }
