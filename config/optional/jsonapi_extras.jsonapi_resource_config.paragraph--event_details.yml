@@ -120,9 +120,7 @@ resourceFields:
     fieldName: field_paragraph_date_range
     publicName: field_paragraph_date_range
     enhancer:
-      id: date_time_from_string
-      settings:
-        dateTimeFormat: 'Y-m-d\TH:i:sP'
+      id: ''
     disabled: false
   field_paragraph_event_price_from:
     fieldName: field_paragraph_event_price_from
@@ -140,7 +138,7 @@ resourceFields:
     fieldName: field_paragraph_link
     publicName: field_paragraph_link
     enhancer:
-      id: ''
+      id: link_enhancer
     disabled: false
   field_paragraph_location:
     fieldName: field_paragraph_location
