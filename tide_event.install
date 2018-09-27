@@ -78,7 +78,7 @@ function _tide_event_add_fields_search_api() {
     $field_start_date->setType('date');
     $field_start_date->setPropertyPath('field_event_details:entity:field_paragraph_date_range');
     $field_start_date->setDatasourceId('entity:node');
-    $field_start_date->setLabel('Event Details » Paragraph » Date Range » Start date value');
+    $field_start_date->setLabel('Event Details » Date Range » Start date value');
     $index->addField($field_start_date);
 
     // Index end date of the event date field.
@@ -86,7 +86,7 @@ function _tide_event_add_fields_search_api() {
     $field_end_date->setType('date');
     $field_end_date->setPropertyPath('field_event_details:entity:field_paragraph_date_range:end_value');
     $field_end_date->setDatasourceId('entity:node');
-    $field_end_date->setLabel('Event Details » Paragraph » Date Range » End date value');
+    $field_end_date->setLabel('Event Details » Date Range » End date value');
     $index->addField($field_end_date);
 
     // Index event category tid field.
@@ -168,6 +168,22 @@ function _tide_event_add_fields_search_api() {
     $field_event_details_event_postal_code->setDatasourceId('entity:node');
     $field_event_details_event_postal_code->setLabel('Event Details » Location » The postal code');
     $index->addField($field_event_details_event_postal_code);
+
+    // Index field_event_details_event_price_from field.
+    $field_event_details_event_price_from = new Field($index, 'field_event_details_event_price_from');
+    $field_event_details_event_price_from->setType('string');
+    $field_event_details_event_price_from->setPropertyPath('field_event_details:entity:field_paragraph_event_price_from');
+    $field_event_details_event_price_from->setDatasourceId('entity:node');
+    $field_event_details_event_price_from->setLabel('Event Details » Price');
+    $index->addField($field_event_details_event_price_from);
+
+    // Index field_event_details_event_price_to field.
+    $field_event_details_event_price_to = new Field($index, 'field_event_details_event_price_to');
+    $field_event_details_event_price_to->setType('string');
+    $field_event_details_event_price_to->setPropertyPath('field_event_details:entity:field_paragraph_event_price_to');
+    $field_event_details_event_price_to->setDatasourceId('entity:node');
+    $field_event_details_event_price_to->setLabel('Event Details » Price to');
+    $index->addField($field_event_details_event_price_to);
 
     $index->save();
   }
