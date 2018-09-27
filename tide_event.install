@@ -74,7 +74,7 @@ function _tide_event_add_fields_search_api() {
     $index = $index_storage->load('node');
 
     // Index start date of event date field.
-    $field_start_date = new Field($index, 'field_paragraph_date_range');
+    $field_start_date = new Field($index, 'field_event_date_start_value');
     $field_start_date->setType('date');
     $field_start_date->setPropertyPath('field_event_details:entity:field_paragraph_date_range');
     $field_start_date->setDatasourceId('entity:node');
@@ -82,12 +82,44 @@ function _tide_event_add_fields_search_api() {
     $index->addField($field_start_date);
 
     // Index end date of the event date field.
-    $field_end_date = new Field($index, 'end_value');
+    $field_end_date = new Field($index, 'field_event_date_end_value');
     $field_end_date->setType('date');
     $field_end_date->setPropertyPath('field_event_details:entity:field_paragraph_date_range:end_value');
     $field_end_date->setDatasourceId('entity:node');
     $field_end_date->setLabel('Event Details » Paragraph » Date Range » End date value');
     $index->addField($field_end_date);
+
+    // Index event category tid field.
+    $field_event_category_tid = new Field($index, 'field_event_category_tid');
+    $field_event_category_tid->setType('integer');
+    $field_event_category_tid->setPropertyPath('field_event_category');
+    $field_event_category_tid->setDatasourceId('entity:node');
+    $field_event_category_tid->setLabel('Event Category');
+    $index->addField($field_event_category_tid);
+
+    // Index event category:name field.
+    $field_event_category_name = new Field($index, 'field_event_category_name');
+    $field_event_category_name->setType('string');
+    $field_event_category_name->setPropertyPath('field_event_category:entity:name');
+    $field_event_category_name->setDatasourceId('entity:node');
+    $field_event_category_name->setLabel('Event Category » Taxonomy term » Name');
+    $index->addField($field_event_category_name);
+
+    // Index event category:uuid field.
+    $field_event_category_uuid = new Field($index, 'field_event_category_uuid');
+    $field_event_category_uuid->setType('string');
+    $field_event_category_uuid->setPropertyPath('field_event_category:entity:uuid');
+    $field_event_category_uuid->setDatasourceId('entity:node');
+    $field_event_category_uuid->setLabel('Event Category » Taxonomy term » UUID');
+    $index->addField($field_event_category_uuid);
+
+    // Index field_news_intro_text field.
+    $field_event_intro_text = new Field($index, 'field_event_intro_text');
+    $field_event_intro_text->setType('text');
+    $field_event_intro_text->setPropertyPath('field_news_intro_text');
+    $field_event_intro_text->setDatasourceId('entity:node');
+    $field_event_intro_text->setLabel('Event Introduction Text');
+    $index->addField($field_event_intro_text);
 
     $index->save();
   }
