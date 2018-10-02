@@ -72,20 +72,27 @@ function tide_event_modules_installed($modules) {
 function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterface $index, array &$items) {
   foreach ($items as $item_id => $item) {
 
+    $content_type = $item->getField('type');
+    if (empty($content_type) || $content_type->getValues()[0] !== 'event') {
+      continue;
+    }
+
     // Format start date of a date range.
-    $start_date = $item->getField('field_paragraph_date_range');
+    $start_date = $item->getField('field_event_date_start_value');
     if (!empty($start_date)) {
-      $value = $start_date->getValues();
-      $start_date->setValues([_tide_event_get_formatted_date($value[0])]);
-      $item->setField("field_paragraph_date_range", $start_date);
+      $values = $start_date->getValues();
+      $start_date_value = !empty($values) ? _tide_event_get_formatted_date($values[0]) : NULL;
+      $start_date->setValues([$start_date_value]);
+      $item->setField("field_event_date_start_value", $start_date);
     }
 
     // Format end date of a date range.
-    $end_date = $item->getField('end_value');
+    $end_date = $item->getField('field_event_date_end_value');
     if (!empty($end_date)) {
-      $value = $end_date->getValues();
-      $end_date->setValues([_tide_event_get_formatted_date($value[0])]);
-      $item->setField("end_value", $end_date);
+      $values = $end_date->getValues();
+      $end_date_value = !empty($values) ? _tide_event_get_formatted_date($values[0]) : NULL;
+      $end_date->setValues([$end_date_value]);
+      $item->setField("field_event_date_end_value", $end_date);
     }
   }
 }
