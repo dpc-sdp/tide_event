@@ -14,5 +14,6 @@ config_devel:
     - field.field.node.event.field_tags
     - field.field.node.event.scheduled_archiving
     - field.field.node.event.scheduled_publishing
+    - field.field.node.event.field_landing_page_contact
   optional:
     - jsonapi_extras.jsonapi_resource_config.paragraph--event_details
