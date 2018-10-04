@@ -58,3 +58,11 @@ Feature: Fields for Event content type
     And I should see text matching "No Contact Us block added yet."
     And I should see the button "Add Contact Us" in the "content" region
 
+    And I see field "Show Content Rating?"
+    And I should see an "input#edit-field-show-content-rating-value" element
+    And I should not see an "input#edit-field-show-content-rating-value.required" element
+
+    And I should see text matching "Related links"
+    And I should see text matching "No Link added yet."
+    And I should see the button "Add Related links" in the "content" region
+
