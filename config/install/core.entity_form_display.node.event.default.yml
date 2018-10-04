@@ -68,7 +68,7 @@ third_party_settings:
       region: content
     group_right_column:
       children:
-        - group__related_links
+        - group_related_links
         - group_contact
         - group_social_sharing
       parent_name: ''
@@ -126,7 +126,7 @@ third_party_settings:
         required_fields: true
       label: 'Social sharing'
       region: content
-    group__related_links:
+    group_related_links:
       children:
         - field_related_links
       parent_name: group_right_column
