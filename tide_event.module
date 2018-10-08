@@ -102,7 +102,10 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
     // a processor.
     // See https://digital-engagement.atlassian.net/browse/SDPA-1071
     $field_link = $item->getField("field_paragraph_link");
-    $uri = $field_link->getValues()[0];
+
+    if (isset($field_link)) {
+      $uri = $field_link->getValues()[0];
+    }
 
     if (isset($uri)) {
       $path = Url::fromUri($uri)->toString();
