@@ -67,7 +67,7 @@ Feature: Fields for Event content type
     And I should see the button "Add Related links" in the "content" region
 
     And I should see text matching "Event Details"
-    And I should see text matching "BOOK"
+    And I should see text matching "Book"
     And I should not see an "input#edit-field-event-details-0-subform-field-paragraph-link-0-uri.required" element
     And I should not see an "input#edit-field-event-details-0-subform-field-paragraph-link-0-title.required" element
 
