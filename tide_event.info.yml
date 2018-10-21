@@ -10,10 +10,15 @@ dependencies:
   - dpc-sdp:tide_media
 config_devel:
   install:
+    - core.entity_form_display.node.event.default
+    - core.entity_view_display.node.event.default
+    - core.entity_view_display.node.event.teaser
     - taxonomy.vocabulary.event
     - field.field.node.event.field_tags
+    - field.field.node.event.field_related_links
+    - field.field.node.event.field_landing_page_contact
     - field.field.node.event.scheduled_archiving
     - field.field.node.event.scheduled_publishing
-    - field.field.node.event.field_landing_page_contact
+    - field.node.event.field_show_content_rating
   optional:
     - jsonapi_extras.jsonapi_resource_config.paragraph--event_details

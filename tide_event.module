@@ -7,6 +7,7 @@
 
 use Drupal\user\Entity\Role;
 use Drupal\workflows\Entity\Workflow;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_entity_bundle_create().
@@ -93,6 +94,27 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
       $end_date_value = !empty($values) ? _tide_event_get_formatted_date($values[0]) : NULL;
       $end_date->setValues([$end_date_value]);
       $item->setField("field_event_date_end_value", $end_date);
+    }
+
+    // Add the Link field path.
+    // TODO: Consider a check for all site aliases
+    //`tide_site.module:tide_site_search_api_index_items_alter`.
+    // This should be redundant if we move to consolidating all index alters to
+    // a processor.
+    // See https://digital-engagement.atlassian.net/browse/SDPA-1071
+    $field_link = $item->getField("field_paragraph_link");
+
+    if (isset($field_link)) {
+      $uri = $field_link->getValues()[0];
+    }
+
+    if (isset($uri)) {
+      $path = Url::fromUri($uri)->toString();
+    }
+
+    if ($path){
+      $field_link->setValues([$path]);
+      $item->setField("field_paragraph_link", $field_link);
     }
   }
 }

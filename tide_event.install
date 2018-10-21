@@ -185,6 +185,30 @@ function _tide_event_add_fields_search_api() {
     $field_event_details_event_price_to->setLabel('Event Details » Price to');
     $index->addField($field_event_details_event_price_to);
 
+    // Index field_event_details_event_requirements_name field.
+    $field_event_details_event_requirements_name = new Field($index, 'field_event_details_event_requirements_name');
+    $field_event_details_event_requirements_name->setType('string');
+    $field_event_details_event_requirements_name->setPropertyPath('field_event_details:entity:field_event_requirements:entity:name');
+    $field_event_details_event_requirements_name->setDatasourceId('entity:node');
+    $field_event_details_event_requirements_name->setLabel('Event Details » Event Requirements » Name');
+    $index->addField($field_event_details_event_requirements_name);
+
+    // Index field_event_details_event_requirements_uuid field.
+    $field_event_details_event_requirements_uuid = new Field($index, 'field_event_details_event_requirements_uuid');
+    $field_event_details_event_requirements_uuid->setType('string');
+    $field_event_details_event_requirements_uuid->setPropertyPath('field_event_details:entity:field_event_requirements:entity:uuid');
+    $field_event_details_event_requirements_uuid->setDatasourceId('entity:node');
+    $field_event_details_event_requirements_uuid->setLabel('Event Details » Event Requirements » UUID');
+    $index->addField($field_event_details_event_requirements_uuid);
+
+    // Index field_event_details_event_requirements_tid field.
+    $field_event_details_event_requirements_tid = new Field($index, 'field_event_details_event_requirements_tid');
+    $field_event_details_event_requirements_tid->setType('integer');
+    $field_event_details_event_requirements_tid->setPropertyPath('field_event_details:entity:field_event_requirements');
+    $field_event_details_event_requirements_tid->setDatasourceId('entity:node');
+    $field_event_details_event_requirements_tid->setLabel('Event Details » Event Requirements');
+    $index->addField($field_event_details_event_requirements_tid);
+
     $index->save();
   }
 }
