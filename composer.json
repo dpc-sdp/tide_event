@@ -5,8 +5,8 @@
     "license": "GPL-2.0+",
     "require": {
         "drupal/smart_trim": "^1.1",
-        "dpc-sdp/tide_core": "@dev",
-        "dpc-sdp/tide_media": "@dev"
+        "dpc-sdp/tide_core": "dev-feature/MovingStorageFieldToTideCore",
+        "dpc-sdp/tide_media": "dev-feature/MovingStorageFieldToTideCore"
     },
     "repositories": {
         "drupal": {
