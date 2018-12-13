@@ -77,7 +77,7 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
     if (empty($content_type) || $content_type->getValues()[0] !== 'event') {
       continue;
     }
-    
+
     // Add the Link field path.
     // TODO: Consider a check for all site aliases
     //`tide_site.module:tide_site_search_api_index_items_alter`.
