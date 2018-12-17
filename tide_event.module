@@ -78,24 +78,6 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
       continue;
     }
 
-    // Format start date of a date range.
-    $start_date = $item->getField('field_event_date_start_value');
-    if (!empty($start_date)) {
-      $values = $start_date->getValues();
-      $start_date_value = !empty($values) ? _tide_event_get_formatted_date($values[0]) : NULL;
-      $start_date->setValues([$start_date_value]);
-      $item->setField("field_event_date_start_value", $start_date);
-    }
-
-    // Format end date of a date range.
-    $end_date = $item->getField('field_event_date_end_value');
-    if (!empty($end_date)) {
-      $values = $end_date->getValues();
-      $end_date_value = !empty($values) ? _tide_event_get_formatted_date($values[0]) : NULL;
-      $end_date->setValues([$end_date_value]);
-      $item->setField("field_event_date_end_value", $end_date);
-    }
-
     // Add the Link field path.
     // TODO: Consider a check for all site aliases
     //`tide_site.module:tide_site_search_api_index_items_alter`.
