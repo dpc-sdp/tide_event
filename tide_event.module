@@ -5,9 +5,10 @@
  * Tide Event module functionality.
  */
 
+use Drupal\Core\Url;
+use Drupal\search_api\IndexInterface;
 use Drupal\user\Entity\Role;
 use Drupal\workflows\Entity\Workflow;
-use Drupal\Core\Url;
 
 /**
  * Implements hook_entity_bundle_create().
@@ -64,13 +65,8 @@ function tide_event_modules_installed($modules) {
 
 /**
  * Implements hook_search_api_index_items_alter()
- *
- * @param \Drupal\search_api\IndexInterface $index
- *   The search index on which items will be indexed.
- * @param \Drupal\search_api\Item\ItemInterface[] $items
- *   The items that will be indexed.
  */
-function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterface $index, array &$items) {
+function tide_event_search_api_index_items_alter(IndexInterface $index, array &$items) {
   foreach ($items as $item_id => $item) {
 
     $content_type = $item->getField('type');
@@ -94,7 +90,7 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
       $path = Url::fromUri($uri)->toString();
     }
 
-    if ($path){
+    if ($path) {
       $field_link->setValues([$path]);
       $item->setField("field_paragraph_link", $field_link);
     }
@@ -106,6 +102,7 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
  *
  * @param int $ts
  *   Timestamp.
+ *
  * @return string
  *   Formatted date.
  */
@@ -115,5 +112,6 @@ function _tide_event_get_formatted_date($ts) {
   $date = new \Datetime();
   $date->setTimezone($timezone);
   $date = $date->setTimestamp($ts);
+
   return $date->format("Y-m-d\TH:i:sP");
 }
