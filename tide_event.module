@@ -48,23 +48,7 @@ function tide_event_entity_bundle_create($entity_type_id, $bundle) {
 }
 
 /**
- * Implements hook_modules_installed().
- */
-function tide_event_modules_installed($modules) {
-  module_set_weight('tide_event', 1000);
-
-  // Invoke hook_entity_bundle_create again so that other modules can change
-  // entity form display of the `event` content type which was reverted by
-  // default config import during module installation.
-  if (!\Drupal::service('config.installer')->isSyncing() && in_array('tide_event', $modules)) {
-    /** @var \Drupal\Core\Extension\ModuleHandler $moduleHandler */
-    $moduleHandler = \Drupal::service('module_handler');
-    //$moduleHandler->invokeAll('entity_bundle_create', ['node', 'event']);
-  }
-}
-
-/**
- * Implements hook_search_api_index_items_alter()
+ * Implements hook_search_api_index_items_alter().
  */
 function tide_event_search_api_index_items_alter(IndexInterface $index, array &$items) {
   foreach ($items as $item_id => $item) {
@@ -76,11 +60,11 @@ function tide_event_search_api_index_items_alter(IndexInterface $index, array &$
 
     // Add the Link field path.
     // TODO: Consider a check for all site aliases
-    //`tide_site.module:tide_site_search_api_index_items_alter`.
+    // `tide_site.module:tide_site_search_api_index_items_alter`.
     // This should be redundant if we move to consolidating all index alters to
     // a processor.
     // See https://digital-engagement.atlassian.net/browse/SDPA-1071
-    $field_link = $item->getField("field_paragraph_link");
+    $field_link = $item->getField('field_paragraph_link');
 
     if (isset($field_link)) {
       $uri = $field_link->getValues()[0];
@@ -92,7 +76,7 @@ function tide_event_search_api_index_items_alter(IndexInterface $index, array &$
 
     if ($path) {
       $field_link->setValues([$path]);
-      $item->setField("field_paragraph_link", $field_link);
+      $item->setField('field_paragraph_link', $field_link);
     }
   }
 }
@@ -113,5 +97,5 @@ function _tide_event_get_formatted_date($ts) {
   $date->setTimezone($timezone);
   $date = $date->setTimestamp($ts);
 
-  return $date->format("Y-m-d\TH:i:sP");
+  return $date->format('Y-m-d\TH:i:sP');
 }
