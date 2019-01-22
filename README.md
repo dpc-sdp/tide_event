@@ -27,7 +27,3 @@ composer require dpc-sdp/tide_event
 # PURPOSE
 - event content type
 - other events functionality
-
-# Caveats
-
-Tide Event is on the alpha release, use with caution. APIs are likely to change before the stable version, that there will be breaking changes and that we're not supporting it for external production sites at the moment.
