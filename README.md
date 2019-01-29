@@ -1,7 +1,7 @@
 # tide_event
 Event content type and functions to handle Events for Tide distribution
 
-[![CircleCI](https://circleci.com/gh/dpc-sdp/tide_event.svg?style=svg&circle-token=2395a9f5b7b4212a37c28b26c6a63e007c26d59d)](https://circleci.com/gh/dpc-sdp/tide_event)
+[![CircleCI](https://circleci.com/gh/dpc-sdp/tide_event.svg?style=svg)](https://circleci.com/gh/dpc-sdp/tide_event)
 
 # CONTENTS OF THIS FILE
 
@@ -27,7 +27,3 @@ composer require dpc-sdp/tide_event
 # PURPOSE
 - event content type
 - other events functionality
-
-# Caveats
-
-Tide Event is on the alpha release, use with caution. APIs are likely to change before the stable version, that there will be breaking changes and that we're not supporting it for external production sites at the moment.

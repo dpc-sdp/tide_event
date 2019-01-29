@@ -5,9 +5,10 @@
  * Tide Event module functionality.
  */
 
+use Drupal\Core\Url;
+use Drupal\search_api\IndexInterface;
 use Drupal\user\Entity\Role;
 use Drupal\workflows\Entity\Workflow;
-use Drupal\Core\Url;
 
 /**
  * Implements hook_entity_bundle_create().
@@ -47,30 +48,9 @@ function tide_event_entity_bundle_create($entity_type_id, $bundle) {
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements hook_search_api_index_items_alter().
  */
-function tide_event_modules_installed($modules) {
-  module_set_weight('tide_event', 1000);
-
-  // Invoke hook_entity_bundle_create again so that other modules can change
-  // entity form display of the `event` content type which was reverted by
-  // default config import during module installation.
-  if (!\Drupal::service('config.installer')->isSyncing() && in_array('tide_event', $modules)) {
-    /** @var \Drupal\Core\Extension\ModuleHandler $moduleHandler */
-    $moduleHandler = \Drupal::service('module_handler');
-    //$moduleHandler->invokeAll('entity_bundle_create', ['node', 'event']);
-  }
-}
-
-/**
- * Implements hook_search_api_index_items_alter()
- *
- * @param \Drupal\search_api\IndexInterface $index
- *   The search index on which items will be indexed.
- * @param \Drupal\search_api\Item\ItemInterface[] $items
- *   The items that will be indexed.
- */
-function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterface $index, array &$items) {
+function tide_event_search_api_index_items_alter(IndexInterface $index, array &$items) {
   foreach ($items as $item_id => $item) {
 
     $content_type = $item->getField('type');
@@ -78,31 +58,13 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
       continue;
     }
 
-    // Format start date of a date range.
-    $start_date = $item->getField('field_event_date_start_value');
-    if (!empty($start_date)) {
-      $values = $start_date->getValues();
-      $start_date_value = !empty($values) ? _tide_event_get_formatted_date($values[0]) : NULL;
-      $start_date->setValues([$start_date_value]);
-      $item->setField("field_event_date_start_value", $start_date);
-    }
-
-    // Format end date of a date range.
-    $end_date = $item->getField('field_event_date_end_value');
-    if (!empty($end_date)) {
-      $values = $end_date->getValues();
-      $end_date_value = !empty($values) ? _tide_event_get_formatted_date($values[0]) : NULL;
-      $end_date->setValues([$end_date_value]);
-      $item->setField("field_event_date_end_value", $end_date);
-    }
-
     // Add the Link field path.
     // TODO: Consider a check for all site aliases
-    //`tide_site.module:tide_site_search_api_index_items_alter`.
+    // `tide_site.module:tide_site_search_api_index_items_alter`.
     // This should be redundant if we move to consolidating all index alters to
     // a processor.
     // See https://digital-engagement.atlassian.net/browse/SDPA-1071
-    $field_link = $item->getField("field_paragraph_link");
+    $field_link = $item->getField('field_paragraph_link');
 
     if (isset($field_link)) {
       $uri = $field_link->getValues()[0];
@@ -112,9 +74,9 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
       $path = Url::fromUri($uri)->toString();
     }
 
-    if ($path){
+    if ($path) {
       $field_link->setValues([$path]);
-      $item->setField("field_paragraph_link", $field_link);
+      $item->setField('field_paragraph_link', $field_link);
     }
   }
 }
@@ -124,6 +86,7 @@ function tide_event_search_api_index_items_alter(\Drupal\search_api\IndexInterfa
  *
  * @param int $ts
  *   Timestamp.
+ *
  * @return string
  *   Formatted date.
  */
@@ -133,5 +96,6 @@ function _tide_event_get_formatted_date($ts) {
   $date = new \Datetime();
   $date->setTimezone($timezone);
   $date = $date->setTimestamp($ts);
-  return $date->format("Y-m-d\TH:i:sP");
+
+  return $date->format('Y-m-d\TH:i:sP');
 }
