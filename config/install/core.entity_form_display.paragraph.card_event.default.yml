@@ -1,4 +1,3 @@
-uuid: 155243cf-07b3-447b-ae6d-02b69e9d55b0
 langcode: en
 status: true
 dependencies:
@@ -17,8 +16,6 @@ dependencies:
     - datetime_range
     - entity_browser
     - link
-_core:
-  default_config_hash: agxBVeITdtibaABss7iJFlszvuYjwCvmRSwanCvthpo
 id: paragraph.card_event.default
 targetEntityType: paragraph
 bundle: card_event
