@@ -281,6 +281,6 @@ function tide_event_update_8002() {
  */
 function tide_event_update_8003() {
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_grant') . '/config/install'];
+  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
   _tide_import_single_config('webform.webform.tide_event_submission', $config_location);
 }
