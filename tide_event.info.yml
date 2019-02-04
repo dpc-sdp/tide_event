@@ -13,7 +13,6 @@ config_devel:
     - core.entity_form_display.node.event.default
     - core.entity_view_display.node.event.default
     - core.entity_view_display.node.event.teaser
-    - core.entity_form_display.paragraph.card_event.default
     - taxonomy.vocabulary.event
     - field.field.node.event.field_tags
     - field.field.node.event.field_related_links
@@ -24,15 +23,7 @@ config_devel:
     - field.field.node.event.field_node_phone
     - field.field.node.event.scheduled_archiving
     - field.field.node.event.scheduled_publishing
-    - field.field.paragraph.card_event.field_paragraph_cta
-    - field.field.paragraph.card_event.field_paragraph_date_range
-    - field.field.paragraph.card_event.field_paragraph_location
-    - field.field.paragraph.card_event.field_paragraph_media
-    - field.field.paragraph.card_event.field_paragraph_summary
-    - field.field.paragraph.card_event.field_paragraph_title
-    - field.field.paragraph.card_event.field_paragraph_topic
     - field.node.event.field_show_content_rating
-    - paragraphs.paragraphs_type.card_event
     - user.role.event_author
     - webform.webform.tide_event_submission
   optional:
