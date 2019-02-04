@@ -126,10 +126,12 @@ function tide_event_webform_submission_presave($submission) {
         'uri' => Html::escape($submission_data['website_url_for_booking']),
         'title' => t('Book now'),
       ],
-      'field_paragraph_date_range' => [[
+      'field_paragraph_date_range' => [
+        [
         'value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['open_date']))) ,
-        'end_value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['close_date'])))
-      ]],
+        'end_value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['close_date']))),
+          ]
+      ],
       'field_event_requirements' => [
         ['target_id' => Html::escape($submission_data['requirements'])],
       ],
@@ -170,8 +172,8 @@ function tide_event_webform_submission_presave($submission) {
         ['target_id' => Html::escape($submission_data['category'])],
       ],
       'field_event_details' => [
-          'target_id' => $event_details->id(),
-          'target_revision_id' => $event_details->getRevisionId(),
+        'target_id' => $event_details->id(),
+        'target_revision_id' => $event_details->getRevisionId(),
       ],
       'field_description' => [
         'value' => Html::escape($submission_data['description']),
