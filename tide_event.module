@@ -128,9 +128,9 @@ function tide_event_webform_submission_presave($submission) {
       ],
       'field_paragraph_date_range' => [
         [
-        'value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['open_date']))) ,
-        'end_value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['close_date']))),
-          ]
+          'value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['open_date']))) ,
+          'end_value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['close_date']))),
+        ]
       ],
       'field_event_requirements' => [
         ['target_id' => Html::escape($submission_data['requirements'])],
