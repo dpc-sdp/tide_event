@@ -70,3 +70,18 @@ Feature: Fields for Event content type
     And I should not see an "input#edit-field-event-details-0-subform-field-paragraph-link-0-uri.required" element
     And I should not see an "input#edit-field-event-details-0-subform-field-paragraph-link-0-title.required" element
 
+    And I should see text matching "Website URL"
+    And I should see an "input#edit-field-node-link-0-uri" element
+    And I should not see an "input#edit-field-node-link-0-uri.required" element
+
+    And I should see text matching "Full Name"
+    And I should see an "input#edit-field-node-author-0-value" element
+    And I should not see an "input#edit-field-node-author-0-value.required" element
+
+    And I should see text matching "Email address"
+    And I should see an "input#edit-field-node-email-0-value" element
+    And I should not see an "input#edit-field-node-email-0-value.required" element
+
+    And I should see text matching "Contact Phone Number"
+    And I should see an "input#edit-field-node-phone-0-value" element
+    And I should not see an "input#edit-field-node-phone-0-value.required" element

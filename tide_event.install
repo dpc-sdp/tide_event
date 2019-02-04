@@ -7,7 +7,10 @@
 
 use Drupal\search_api\Item\Field;
 use Drupal\user\Entity\Role;
+use Drupal\user\Entity\User;
 use Drupal\workflows\Entity\Workflow;
+use Drupal\Component\Utility\Random;
+
 
 /**
  * Implements hook_install().
@@ -33,6 +36,16 @@ function tide_event_install() {
       $editorial_workflow->save();
     }
   }
+
+  // Remove the user we created.
+  if ($user = user_load_by_name('Event Author')) {
+    user_delete($user->id());
+  }
+
+  // Now cleanup the config.
+  $config_factory = \Drupal::configFactory();
+  // Remove the image styles that Linkit has installed.
+  $config_factory->getEditable('user.role.event_author')->delete();
 }
 
 /**
@@ -226,4 +239,39 @@ function tide_event_update_8001() {
       $editorial_workflow->save();
     }
   }
+}
+
+/**
+ * Add Event Author user.
+ */
+function tide_event_update_8002() {
+  // First import Event Author role configuration.
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+  _tide_import_single_config('user.role.event_author', $config_location);
+
+  // Create new Grant Author user.
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $user = User::create();
+
+  $random = new Random();
+  $pass = $random->string();
+  $mail = $random->string();
+
+  // Mandatory settings.
+  $user->setPassword($pass);
+  $user->enforceIsNew();
+  $user->setEmail($mail . '@noreply.vic');
+  $user->setUsername('Event Author');
+  $user->addRole('event_author');
+
+  // Optional settings.
+  $user->set("init", 'email');
+  $user->set("langcode", $language);
+  $user->set("preferred_langcode", $language);
+  $user->set("preferred_admin_langcode", $language);
+  $user->activate();
+
+  // Save user.
+  $user->save();
 }
