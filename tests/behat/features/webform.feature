@@ -46,7 +46,7 @@ Feature: Webform "Grant Submission" exists.
   @api @nosuggest
   Scenario: Check form submission.
     Given I am an anonymous user
-    When I visit "form/tide-grant-submission"
+    When I visit "form/tide-event-submission"
     And I fill in the following:
       | Name of event | Test Event |
       | Description  | This is the test event submission   |
