@@ -7,7 +7,7 @@ Feature: Webform "Event Submission" exists.
   Scenario: The form has the expected fields (and labels where we can use them).
     Given I am logged in as a user with the "administer webform" permission
     When I visit "admin/structure/webform"
-    Then I see the link "Event Submission"
+    Then I should see the link "Event Submission"
 
     When I click "Event Submission"
     Then I see field "Name of event"
