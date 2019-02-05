@@ -25,7 +25,7 @@ Feature: Webform "Event Submission" exists.
     And I see field "Contact person"
     And I see field "Contact email address"
     And I see field "Contact telephone number"
-    And I see field "input#edit-agree-privacy-statement"
+    And I see field "edit-agree-privacy-statement"
     And I should see the button "Submit"
 
   @api @nosuggest
