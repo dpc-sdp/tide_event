@@ -1,7 +1,7 @@
 @tide @jsonapi @suggest
 Feature: JSON API Webform
 
-  Ensure that the Grant Submission form is exposed via JSON API.
+  Ensure that the Event Submission form is exposed via JSON API.
 
   Scenario: Send GET request to retrieve the Content Rating form
     When I send a GET request to "/api/v1/webform/webform?filter[id][value]=tide_event_submission"
