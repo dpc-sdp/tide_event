@@ -25,7 +25,7 @@ Feature: Webform "Event Submission" exists.
     And I see field "Contact person"
     And I see field "Contact email address"
     And I see field "Contact telephone number"
-    And I see field "Contact I have read and understand how Department of Premier and Cabinet stores information."
+    And I see field "input#edit-agree-privacy-statement"
     And I should see the button "Submit"
 
   @api @nosuggest
