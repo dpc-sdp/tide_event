@@ -12,7 +12,7 @@ Feature: Webform "Event Submission" exists.
     When I click "Event Submission"
     Then I see field "Name of event"
     And I see field "Category"
-    And I see field "Location"
+    And I see field "Country"
     And I see field "Description"
     And I see field "Requirements"
     And I see field "Open date"
