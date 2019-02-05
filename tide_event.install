@@ -249,7 +249,7 @@ function tide_event_update_8002() {
   $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
   _tide_import_single_config('user.role.event_author', $config_location);
 
-  // Create new Grant Author user.
+  // Create new Event Author user.
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $user = User::create();
 
