@@ -6,7 +6,7 @@
     "require": {
         "dpc-sdp/tide_core": "dev-feature/SDPA-1630-Submit-Event as 1.0.0",
         "dpc-sdp/tide_media": "^1.0",
-        "drupal/webform": "5.0.0-rc18"
+        "dpc-sdp/tide_webform": "^1.0"
     },
     "suggest": {
         "dpc-sdp/tide_api:^1.0": "Allows to use Drupal in headless mode"

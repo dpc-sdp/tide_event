@@ -9,6 +9,7 @@ dependencies:
   - drupal:webform
   - dpc-sdp:tide_core
   - dpc-sdp:tide_media
+  - dpc-sdp:tide_webform
 config_devel:
   install:
     - core.entity_form_display.node.event.default
