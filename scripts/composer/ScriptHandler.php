@@ -70,9 +70,6 @@ SETTINGS;
       umask($oldmask);
       $event->getIO()->write('Create a sites/default/files directory with chmod 0777');
     }
-
-//    $fs->chmod($drupalRoot . '/sites/default', 0555);
-//    $fs->chmod($drupalRoot . '/sites/default/settings.php', 0644);
   }
 
   /**
