@@ -12,7 +12,6 @@ Feature: JSON API Webform
     And the JSON node "data[0].type" should be equal to "webform--webform"
     And the JSON node "data[0].attributes.uuid" should exist
     And the JSON node "data[0].attributes.elements" should exist
-    And the JSON node "data[0].attributes.elements.name_of_event" should exist
     And the JSON node "data[0].attributes.elements.category" should exist
     And the JSON node "data[0].attributes.elements.location" should exist
     And the JSON node "data[0].attributes.elements.description" should exist
@@ -32,3 +31,4 @@ Feature: JSON API Webform
     And the JSON node "data[0].attributes.elements.agree_privacy_statement" should exist
     And the JSON node "data[0].attributes.markup" should exist
     And the JSON node "data[0].attributes.entity_id" should be equal to "tide_event_submission"
+    And the JSON node "data[0].attributes.elements.name_of_event" should exist
