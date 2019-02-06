@@ -46,27 +46,32 @@ Feature: Webform "Event Submission" exists.
   @api @nosuggest
   Scenario: Check form submission.
     Given I am an anonymous user
+    And "event" terms:
+      | name                |
+      | Test event category |
+    And "event_requirements" terms:
+      | name                    |
+      | Test event requirements |
+    And the cache has been cleared
     When I visit "form/tide-event-submission"
     And I fill in the following:
-      | Name of event | Test Event |
-      | Description  | This is the test event submission   |
-      | Open date |  2026-08-06 |
-      | Close date | 2036-08-06 |
-      | edit-price-from | 100000 |
-      | edit-price-to | 200000 |
-      | Website URL for event information | http://www.vic.gov.au |
-      | Website URL for booking | http://www.vic.gov.au |
-      | Contact person | John Doe |
-      | Contact email address | noreply@example.com |
-      | Contact telephone number | 0412123123 |
-    And I select "Agriculture" from "Category"
-    And I select "Seniors" from "Requirements"
+      | Name of event                     | Test Event                        |
+      | Description                       | This is the test event submission |
+      | Open date                         | 2026-08-06                        |
+      | Close date                        | 2036-08-06                        |
+      | edit-price-from                   | 100000                            |
+      | edit-price-to                     | 200000                            |
+      | Website URL for event information | http://www.vic.gov.au             |
+      | Website URL for booking           | http://www.vic.gov.au             |
+      | Contact person                    | John Doe                          |
+      | Contact email address             | noreply@example.com               |
+      | Contact telephone number          | 0412123123                        |
+    And I select "Test event category" from "Category"
+    And I select "Test event requirements" from "Requirements"
     And I check "I have read and understand how Department of Premier and Cabinet stores information."
     And I press "Submit"
     Then I should see the text "We'll take a look at your event before it's published live in the vic.gov.au events database. We will let you know once your event has been published. Alternatively, we'll be in touch for more information."
 
-  @api @nosuggest
-  Scenario: The Event node is expected to be created from webform submission.
     Given I am logged in as a user with the "administrator" role
     When I visit "/admin/content?title=&type=event&status=2&langcode=All"
     Then I should see "Test Event"
