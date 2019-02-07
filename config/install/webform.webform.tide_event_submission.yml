@@ -20,6 +20,7 @@ elements: |
   category:
     '#type': webform_term_select
     '#title': Category
+    '#multiple': true
     '#required': true
     '#vocabulary': event
     '#breadcrumb_delimiter': ''
@@ -44,6 +45,7 @@ elements: |
   requirements:
     '#type': webform_term_select
     '#title': Requirements
+    '#multiple': true
     '#vocabulary': event_requirements
     '#breadcrumb_delimiter': ''
   open_date:
