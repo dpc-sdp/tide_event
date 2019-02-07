@@ -5,7 +5,8 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "dpc-sdp/tide_core": "^1.0",
-        "dpc-sdp/tide_media": "^1.0"
+        "dpc-sdp/tide_media": "^1.0",
+        "dpc-sdp/tide_webform": "^1.0"
     },
     "suggest": {
         "dpc-sdp/tide_api:^1.0": "Allows to use Drupal in headless mode"
@@ -14,6 +15,15 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        }
+    },
+    "extra": {
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "dpc-sdp/tide_core": {
+                "[SDPA-1630] Webform submission event": "https://patch-diff.githubusercontent.com/raw/dpc-sdp/tide_core/pull/58.patch"
+            }
         }
     }
 }

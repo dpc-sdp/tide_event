@@ -6,8 +6,10 @@ core: 8.x
 dependencies:
   - drupal:datetime_range
   - drupal:menu_ui
+  - drupal:webform
   - dpc-sdp:tide_core
   - dpc-sdp:tide_media
+  - dpc-sdp:tide_webform
 config_devel:
   install:
     - core.entity_form_display.node.event.default
@@ -17,8 +19,14 @@ config_devel:
     - field.field.node.event.field_tags
     - field.field.node.event.field_related_links
     - field.field.node.event.field_landing_page_contact
+    - field.field.node.event.field_node_author
+    - field.field.node.event.field_node_email
+    - field.field.node.event.field_node_link
+    - field.field.node.event.field_node_phone
     - field.field.node.event.scheduled_archiving
     - field.field.node.event.scheduled_publishing
     - field.node.event.field_show_content_rating
+    - user.role.event_author
+    - webform.webform.tide_event_submission
   optional:
     - jsonapi_extras.jsonapi_resource_config.paragraph--event_details
