@@ -17,9 +17,13 @@
             "url": "https://packages.drupal.org/8"
         }
     },
-    "patches": {
-        "dpc-sdp/tide_core": {
-            "[SDPA-1630] Webform submission event": "https://patch-diff.githubusercontent.com/raw/dpc-sdp/tide_core/pull/58.patch"
+    "extra": {
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "dpc-sdp/tide_core": {
+                "[SDPA-1630] Webform submission event": "https://patch-diff.githubusercontent.com/raw/dpc-sdp/tide_core/pull/58.patch"
+            }
         }
     }
 }
