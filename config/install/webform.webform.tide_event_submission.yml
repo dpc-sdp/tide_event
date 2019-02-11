@@ -117,6 +117,9 @@ elements: |
     '#type': checkbox
     '#title': 'I have read and understand how Department of Premier and Cabinet stores information.'
     '#required': true
+  actions:
+    '#type': webform_actions
+    '#title': Submit
 css: ''
 javascript: ''
 settings:
