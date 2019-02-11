@@ -74,10 +74,18 @@ elements: |
     '#type': number
     '#title': 'Price From'
     '#description': 'Enter the price amount in dollar value.'
+    '#states':
+      disabled:
+        ':input[name="free"]':
+          checked: true
   price_to:
     '#type': number
     '#title': 'Price To'
     '#description': 'Enter the price amount in dollar value.'
+    '#states':
+      disabled:
+        ':input[name="free"]':
+          checked: true
   website_url_for_event_information:
     '#type': url
     '#title': 'Website URL for event information'
