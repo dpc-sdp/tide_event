@@ -146,6 +146,7 @@ function tide_event_webform_submission_presave($submission) {
           'address_line2' => Html::escape($submission_data['location']['address_line2']),
         ],
       ],
+      'field_node_on_going' => Html::escape($submission_data['this_grant_program_is_ongoing_and_does_have_an_open_close_dates_']),
       'field_paragraph_event_price_from' => [
         'value' => Html::escape($submission_data['price_from']),
       ],

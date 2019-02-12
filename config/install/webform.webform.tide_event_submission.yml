@@ -78,6 +78,7 @@ elements: |
       disabled:
         ':input[name="free"]':
           checked: true
+    '#step': '0.1'
   price_to:
     '#type': number
     '#title': 'Price To'
@@ -86,6 +87,7 @@ elements: |
       disabled:
         ':input[name="free"]':
           checked: true
+    '#step': '0.1'
   website_url_for_event_information:
     '#type': url
     '#title': 'Website URL for event information'
