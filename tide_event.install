@@ -293,5 +293,4 @@ function tide_event_update_8004() {
   _tide_import_single_config('core.entity_form_display.node.event.default', $config_location);
   _tide_import_single_config('core.entity_view_display.node.event.default', $config_location);
   _tide_import_single_config('field.field.node.event.field_show_related_content', $config_location);
-  _tide_import_single_config('field.storage.node.field_description', $config_location);
 }
