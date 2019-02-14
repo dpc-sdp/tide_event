@@ -132,9 +132,6 @@ function tide_event_webform_submission_presave($submission) {
           'end_value' => date('Y-m-d\TH:i:00', strtotime(Html::escape($submission_data['close_date']))),
         ],
       ],
-      'field_event_requirements' => [
-        ['target_id' => Html::escape($submission_data['requirements'])],
-      ],
       'field_paragraph_location' => [
         [
           'langcode' => '',
@@ -155,6 +152,11 @@ function tide_event_webform_submission_presave($submission) {
 
     ];
 
+    // Loop through requirements multiple value fields.
+    foreach ($submission_data['requirements'] as $requirement) {
+      $event_details_data['field_event_requirements'][] = ['target_id' => Html::escape($requirement)];
+    }
+
     $event_details = Paragraph::create($event_details_data);
     $event_details->save();
 
@@ -168,9 +170,6 @@ function tide_event_webform_submission_presave($submission) {
     $node = Node::create([
       'type' => 'event',
       'title' => Html::escape($submission_data['name_of_event']),
-      'field_event_category' => [
-        ['target_id' => Html::escape($submission_data['category'])],
-      ],
       'field_event_details' => [
         'target_id' => $event_details->id(),
         'target_revision_id' => $event_details->getRevisionId(),
@@ -190,6 +189,11 @@ function tide_event_webform_submission_presave($submission) {
       'field_node_email' => Html::escape($submission_data['contact_email_address']),
       'field_node_phone' => Html::escape($submission_data['contact_telephone_number']),
     ]);
+
+    // Loop through category multiple value fields.
+    foreach ($submission_data['category'] as $category) {
+      $node->field_event_category->appendItem(Html::escape($category));
+    }
 
     // Set the node to Needs Review state.
     $node->set('moderation_state', "needs_review");
