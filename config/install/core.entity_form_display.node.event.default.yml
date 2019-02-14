@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.event.field_node_site
     - field.field.node.event.field_related_links
     - field.field.node.event.field_show_content_rating
+    - field.field.node.event.field_show_related_content
     - field.field.node.event.field_show_social_sharing
     - field.field.node.event.field_tags
     - field.field.node.event.field_topic
@@ -136,6 +137,7 @@ third_party_settings:
       region: content
     group_related_links:
       children:
+        - field_show_related_content
         - field_related_links
       parent_name: group_right_column
       weight: 3
@@ -238,7 +240,7 @@ content:
     type: entity_browser_entity_reference
     region: content
   field_landing_page_contact:
-    weight: 14
+    weight: 8
     settings:
       title: 'Contact Us block'
       title_plural: 'Contact Us blocks'
@@ -250,7 +252,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_landing_page_show_contact:
-    weight: 13
+    weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
@@ -323,7 +325,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_related_links:
-    weight: 4
+    weight: 7
     settings:
       title: Link
       title_plural: Links
@@ -347,6 +349,13 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_show_related_content:
+    weight: 6
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_show_social_sharing:
     weight: 4
     settings:
@@ -356,7 +365,7 @@ content:
     region: content
   field_tags:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -364,7 +373,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_topic:
-    weight: 4
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -454,7 +463,7 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
   uid:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
