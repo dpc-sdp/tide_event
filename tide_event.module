@@ -217,7 +217,6 @@ function tide_event_webform_submission_presave($submission) {
 
 /**
  * Implements hook_webform_element_alter().
- *
  */
 function tide_event_webform_element_alter(array &$element, FormStateInterface $form_state, array $context) {
   // Check for Event Submission Price To field.
