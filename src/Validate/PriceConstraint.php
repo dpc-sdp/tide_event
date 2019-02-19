@@ -2,7 +2,6 @@
 
 namespace Drupal\tide_event\Validate;
 
-use Drupal\Core\Field\FieldException;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -12,11 +11,13 @@ class PriceConstraint {
   /**
    * Validates given element.
    *
-   * @param array              $element      The form element to process.
-   * @param FormStateInterface $formState    The form state.
-   * @param array              $form The complete form structure.
+   * @param array $element
+   *   The form element to process.
+   * @param FormStateInterface $formState
+   *   The form state.
+   * @param array $form
+   *   The complete form structure.
    */
-
   public static function validate(array &$element, FormStateInterface $formState, array &$form) {
     $error = FALSE;
     $webformKey = $element['#webform_key'];
