@@ -16,6 +16,7 @@ class PriceConstraint {
    * @param FormStateInterface $formState    The form state.
    * @param array              $form The complete form structure.
    */
+
   public static function validate(array &$element, FormStateInterface $formState, array &$form) {
     $error = FALSE;
     $webformKey = $element['#webform_key'];
@@ -30,25 +31,25 @@ class PriceConstraint {
       return;
     }
 
-    if($price_to_value < $price_from_value) {
+    if ($price_to_value < $price_from_value) {
       $error = TRUE;
     }
-    // do some validation here...
-    // and set some error variable, e.g. $error
 
     if ($error) {
       if (isset($element['#title'])) {
-        $tArgs = array(
+        $tArgs = [
           '%name' => empty($element['#title']) ? $element['#parents'][0] : $element['#title'],
           '%value' => $price_to_value,
-        );
+        ];
         $formState->setError(
           $element,
           t('The %name value "%value" should be greater or equal to "Price From" value. Please use a different amount.', $tArgs)
         );
-      } else {
+      }
+      else {
         $formState->setError($element);
       }
     }
   }
+
 }
