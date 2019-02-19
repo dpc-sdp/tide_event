@@ -206,3 +206,20 @@ function tide_event_webform_submission_presave($submission) {
     $node->save();
   }
 }
+
+/**
+ * Implements hook_webform_element_alter().
+ *
+ * @param array              $element
+ * @param FormStateInterface $form_state
+ * @param array              $context
+ */
+function tide_event_webform_element_alter(array &$element, FormState $form_state, array $context) {
+  // check for desired element
+  if (isset($element['#webform_id']) && $element['#webform_id'] === 'tide_event_submission--price_to') {
+    $element['#element_validate'][] = array(
+      'Drupal\tide_event\Validate\PriceConstraint',
+      'validate'
+    );
+  }
+}
