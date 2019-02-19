@@ -18,7 +18,6 @@ class PriceConstraint {
    * @param array $form
    *   The complete form structure.
    */
-
   public static function validate(array &$element, FormStateInterface $formState, array &$form) {
     $error = FALSE;
     $webformKey = $element['#webform_key'];
