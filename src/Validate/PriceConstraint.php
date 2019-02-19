@@ -14,7 +14,7 @@ class PriceConstraint {
    *
    * @param array $element
    *   The form element to process.
-   * @param Drupal\Core\Form\FormStateInterface $formState
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state.
    * @param array $form
    *   The complete form structure.
