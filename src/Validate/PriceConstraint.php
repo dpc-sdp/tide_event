@@ -8,6 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
  * Form API callback. Validate element value.
  */
 class PriceConstraint {
+
   /**
    * Validates given element.
    *
