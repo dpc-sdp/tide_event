@@ -26,9 +26,6 @@ class PriceConstraint {
     $price_from_value = $formState->getValue('price_from');
     $price_to_value = $formState->getValue($webformKey);
 
-    error_log("Price From: " . $price_from_value, 0);
-    error_log("Price To: " . $price_to_value, 0);
-
     // Skip empty unique fields or arrays (aka #multiple).
     if ($price_to_value === '' || is_array($price_to_value)) {
       return;
