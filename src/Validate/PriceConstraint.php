@@ -3,6 +3,7 @@
 namespace Drupal\tide_event\Validate;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Form API callback. Validate element value.
@@ -45,7 +46,7 @@ class PriceConstraint {
         ];
         $formState->setError(
           $element,
-          t('The %name value "%value" should be greater or equal to "Price From" value. Please use a different amount.', $tArgs)
+          new TranslatableMarkup('The %name value "%value" should be greater or equal to "Price From" value. Please use a different amount.', $tArgs)
         );
       }
       else {
