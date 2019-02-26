@@ -6,6 +6,7 @@
  */
 
 use Drupal\node\Entity\Node;
+use Drupal\smart_trim\Truncate\TruncateHTML;
 use Drupal\search_api\IndexInterface;
 use Drupal\user\Entity\Role;
 use Drupal\paragraphs\Entity\Paragraph;
@@ -116,6 +117,8 @@ function tide_event_config_ignore_settings_alter(array &$settings) {
  * Implements hook_ENTITY_TYPE_presave().
  */
 function tide_event_webform_submission_presave($submission) {
+  $truncator = new TruncateHTML();
+
   if ($submission->getWebform()->get('id') === 'tide_event_submission') {
     $submission_data = $submission->getData();
 
@@ -174,7 +177,12 @@ function tide_event_webform_submission_presave($submission) {
         'target_id' => $event_details->id(),
         'target_revision_id' => $event_details->getRevisionId(),
       ],
-      'field_description' => [
+      'body' => [
+        'value' => Html::escape($submission_data['description']),
+        'summary' => $truncator->truncateWords(Html::escape($submission_data['description']), 30, ''),
+        'format' => 'rich_text',
+      ],
+      'field_event_description' => [
         'value' => Html::escape($submission_data['description']),
       ],
       'field_landing_page_summary' => [
