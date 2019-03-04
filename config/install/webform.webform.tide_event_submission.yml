@@ -76,6 +76,8 @@ elements: |
         ':input[name="free"]':
           checked: true
     '#step': '0.01'
+    '#conditions':
+      gte: ':input[name="price_from"]'
   free:
     '#type': checkbox
     '#title': Free

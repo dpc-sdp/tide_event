@@ -13,6 +13,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\workflows\Entity\Workflow;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_entity_bundle_create().
@@ -212,5 +213,18 @@ function tide_event_webform_submission_presave($submission) {
     }
 
     $node->save();
+  }
+}
+
+/**
+ * Implements hook_webform_element_alter().
+ */
+function tide_event_webform_element_alter(array &$element, FormStateInterface $form_state, array $context) {
+  // Check for Event Submission Price To field.
+  if (isset($element['#webform_id']) && $element['#webform_id'] === 'tide_event_submission--price_to') {
+    $element['#element_validate'][] = [
+      'Drupal\tide_event\Validate\PriceConstraint',
+      'validate',
+    ];
   }
 }
