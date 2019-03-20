@@ -4,8 +4,8 @@
     "type": "drupal-module",
     "license": "GPL-2.0-or-later",
     "require": {
-        "dpc-sdp/tide_core": "dev-feature/SDPA-1213_metatag_upgrade as 1.0",
-        "dpc-sdp/tide_media": "dev-feature/SDPA-1213_jsonapi_upgrade as 1.0"
+        "dpc-sdp/tide_core": "dev-develop",
+        "dpc-sdp/tide_media": "dev-develop"
     },
     "suggest": {
         "dpc-sdp/tide_api:dev-feature/SDPA-1213_jsonapi_upgrade": "Allows to use Drupal in headless mode"
@@ -14,6 +14,12 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        }
+    },
+    "extra": {
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
+        "patches": {
         }
     }
 }
