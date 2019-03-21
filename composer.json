@@ -8,7 +8,7 @@
         "dpc-sdp/tide_media": "dev-develop"
     },
     "suggest": {
-        "dpc-sdp/tide_api:dev-feature/SDPA-1213_jsonapi_upgrade": "Allows to use Drupal in headless mode"
+        "dpc-sdp/tide_api:dev-develop": "Allows to use Drupal in headless mode"
     },
     "repositories": {
         "drupal": {
