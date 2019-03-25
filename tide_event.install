@@ -301,8 +301,8 @@ function tide_event_update_8004() {
 function tide_event_update_8005() {
   $webforms = \Drupal::entityTypeManager()
     ->getStorage('webform')
-    ->loadMultiple();
-  foreach ($webforms as $webform) {
+    ->loadByProperties(['id' => 'tide_event_submission']);
+  if ($webform = reset($webforms)) {
     /** @var \Drupal\webform\Entity\Webform $webform */
     $access_rules = $webform->getAccessRules();
     if (!isset($access_rules['configuration']['roles'])) {
