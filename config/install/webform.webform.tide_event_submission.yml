@@ -270,6 +270,11 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
+  configuration:
+    roles:
+      - anonymous
+    users: {  }
+    permissions: {  }
 handlers:
   event_submission_email:
     id: email
