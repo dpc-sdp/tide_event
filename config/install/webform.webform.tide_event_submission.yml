@@ -273,6 +273,7 @@ access:
   configuration:
     roles:
       - anonymous
+      - authenticated
     users: {  }
     permissions: {  }
 handlers:
