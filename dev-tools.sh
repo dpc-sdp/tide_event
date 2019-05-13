@@ -33,6 +33,6 @@
 # stable version.
 #
 # Uncomment and set the Dev-Tools's commit value and commit this change.
-# export DRUPALDEV_COMMIT=COMMIT_SHA
+export GH_COMMIT=c982e758c3cd3d260e158ea54a7c3401edfdb8a9
 
 bash <(curl -L https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install?"$(date +%s)") "$@"
