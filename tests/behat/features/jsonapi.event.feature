@@ -11,7 +11,7 @@ Feature: JSON API Webform
     And the JSON node "data" should exist
     And the JSON node "data[0].type" should be equal to "webform--webform"
     And the JSON node "data[0].id" should exist
-    And the JSON node "data[0].attributes.entity_id" should be equal to "tide_event_submission"
+    And the JSON node "data[0].attributes.drupal_internal__id" should be equal to "tide_event_submission"
     And the JSON node "data[0].attributes.elements" should exist
     And the JSON node "data[0].attributes.elements.name_of_event" should exist
     And the JSON node "data[0].attributes.elements.category" should exist
