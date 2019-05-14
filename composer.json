@@ -6,10 +6,10 @@
     "require": {
         "dpc-sdp/tide_core": "1.2.0",
         "dpc-sdp/tide_media": "1.2.1",
-        "dpc-sdp/tide_webform": "1.1.1"
+        "dpc-sdp/tide_webform": "1.1.2"
     },
     "suggest": {
-        "dpc-sdp/tide_api:1.2.1": "Allows to use Drupal in headless mode"
+        "dpc-sdp/tide_api:1.2.2": "Allows to use Drupal in headless mode"
     },
     "repositories": {
         "drupal": {
