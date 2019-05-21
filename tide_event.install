@@ -11,6 +11,7 @@ use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
 use Drupal\workflows\Entity\Workflow;
 use Drupal\Component\Utility\Random;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Implements hook_install().
