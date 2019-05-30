@@ -9,7 +9,7 @@
         "dpc-sdp/tide_webform": "dev-feature/SDPA-2523_remove-broken-updates"
     },
     "suggest": {
-        "dpc-sdp/tide_api:1.2.3": "Allows to use Drupal in headless mode"
+        "dpc-sdp/tide_api:dev-feature/SDPA-2523_remove-broken-updates": "Allows to use Drupal in headless mode"
     },
     "repositories": {
         "drupal": {
