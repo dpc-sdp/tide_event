@@ -6,7 +6,7 @@
     "require": {
         "dpc-sdp/tide_core": "dev-feature/SDPA-2523_redo_SDPA-309-updated-group-patch",
         "dpc-sdp/tide_media": "dev-feature/SDPA-2523_remove-broken-updates",
-        "dpc-sdp/tide_webform": "1.1.2"
+        "dpc-sdp/tide_webform": "dev-feature/SDPA-2523_remove-broken-updates"
     },
     "suggest": {
         "dpc-sdp/tide_api:1.2.3": "Allows to use Drupal in headless mode"
