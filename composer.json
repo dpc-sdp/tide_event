@@ -5,7 +5,7 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "dpc-sdp/tide_core": "dev-feature/SDPA-2523_redo_SDPA-309-updated-group-patch",
-        "dpc-sdp/tide_media": "1.2.2",
+        "dpc-sdp/tide_media": "dev-feature/SDPA-2523_remove-broken-updates",
         "dpc-sdp/tide_webform": "1.1.2"
     },
     "suggest": {
