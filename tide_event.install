@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Session\AccountInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\search_api\Item\Field;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
@@ -321,4 +322,56 @@ function tide_event_update_8005() {
       $webform->save();
     }
   }
+}
+
+/**
+ * Adds field_show_time.
+ */
+function tide_event_update_8006() {
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+  _tide_import_single_config('field.storage.paragraph.field_show_time', $config_location);
+  _tide_import_single_config('field.field.paragraph.event_details.field_show_time', $config_location);
+  _tide_import_single_config('core.entity_form_display.paragraph.event_details.default', $config_location);
+}
+
+/**
+ * Set default value of field_show_time for existing events.
+ */
+function tide_event_update_8007(&$sandbox) {
+  $new_field = 'field_show_time';
+
+  if (!isset($sandbox['total'])) {
+    $count = \Drupal::entityQuery('paragraph')
+      ->condition('type', 'event_details')
+      ->notExists($new_field)
+      ->count()
+      ->execute();
+    $sandbox['total'] = $count;
+    $sandbox['current'] = 0;
+    $sandbox['processed'] = 0;
+    $sandbox['#finished'] = $count ? 0 : 1;
+  }
+
+  $batch_size = 50;
+  $ids = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'event_details')
+    ->notExists($new_field)
+    ->condition('id', $sandbox['current'], '>')
+    ->sort('id', 'ASC')
+    ->range(0, $batch_size)
+    ->execute();
+
+  foreach ($ids as $id) {
+    $sandbox['current'] = $id;
+    $paragraph = Paragraph::load($id);
+    if ($paragraph && $paragraph->hasField($new_field)) {
+      $paragraph->set($new_field, TRUE);
+      $paragraph->setNewRevision(FALSE);
+      $paragraph->save();
+    }
+    $sandbox['processed']++;
+  }
+
+  $sandbox['#finished'] = ($sandbox['processed'] / $sandbox['total']);
 }

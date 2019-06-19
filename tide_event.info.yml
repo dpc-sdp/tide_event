@@ -26,6 +26,8 @@ config_devel:
     - field.field.node.event.scheduled_archiving
     - field.field.node.event.scheduled_publishing
     - field.node.event.field_show_content_rating
+    - field.field.paragraph.event_details.field_show_time
+    - field.storage.paragraph.field_show_time
     - user.role.event_author
     - webform.webform.tide_event_submission
   optional:
