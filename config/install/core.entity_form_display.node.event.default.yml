@@ -17,8 +17,6 @@ dependencies:
     - field.field.node.event.field_node_email
     - field.field.node.event.field_node_link
     - field.field.node.event.field_node_phone
-    - field.field.node.event.field_node_primary_site
-    - field.field.node.event.field_node_site
     - field.field.node.event.field_related_links
     - field.field.node.event.field_show_content_rating
     - field.field.node.event.field_show_related_content
@@ -309,20 +307,6 @@ content:
     region: content
     settings:
       placeholder: ''
-    third_party_settings: {  }
-  field_node_primary_site:
-    type: options_buttons
-    region: content
-    field_name: field_node_primary_site
-    weight: 15
-    settings: {  }
-    third_party_settings: {  }
-  field_node_site:
-    type: options_buttons
-    region: content
-    field_name: field_node_site
-    weight: 14
-    settings: {  }
     third_party_settings: {  }
   field_related_links:
     weight: 7
