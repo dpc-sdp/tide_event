@@ -39,8 +39,6 @@ config_devel:
     - field.field.node.event.field_show_social_sharing
     - field.field.node.event.field_tags
     - field.field.node.event.field_topic
-    - field.field.node.event.scheduled_archiving
-    - field.field.node.event.scheduled_publishing
     - field.field.paragraph.event_details.field_event_requirements
     - field.field.paragraph.event_details.field_paragraph_date_range
     - field.field.paragraph.event_details.field_paragraph_event_price_from
