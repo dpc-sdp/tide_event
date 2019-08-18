@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Session\AccountInterface;
+use Drupal\field\Entity\FieldConfig;
 use Drupal\search_api\Item\Field;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
@@ -320,5 +321,16 @@ function tide_event_update_8005() {
       $webform->setAccessRules($access_rules);
       $webform->save();
     }
+  }
+}
+
+/**
+ * Change field_show_social_sharing field default value to 1.
+ */
+function tide_event_update_8006() {
+  $field = FieldConfig::loadByName('node', 'event', 'field_show_social_sharing');
+  if (!$field->get('default_value')) {
+    $field->set('default_value', TRUE);
+    $field->save();
   }
 }
