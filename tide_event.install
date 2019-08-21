@@ -7,6 +7,7 @@
 
 use Drupal\Core\Session\AccountInterface;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\field\Entity\FieldConfig;
 use Drupal\search_api\Item\Field;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
@@ -325,9 +326,20 @@ function tide_event_update_8005() {
 }
 
 /**
- * Adds field_show_time.
+ * Change field_show_social_sharing field default value to 1.
  */
 function tide_event_update_8006() {
+  $field = FieldConfig::loadByName('node', 'event', 'field_show_social_sharing');
+  if (!$field->get('default_value')) {
+    $field->set('default_value', TRUE);
+    $field->save();
+  }
+}
+
+/**
+ * Adds field_show_time.
+ */
+function tide_event_update_8007() {
   module_load_include('inc', 'tide_core', 'includes/helpers');
   $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
   _tide_import_single_config('field.storage.paragraph.field_show_time', $config_location);
@@ -338,7 +350,7 @@ function tide_event_update_8006() {
 /**
  * Set default value of field_show_time for existing events.
  */
-function tide_event_update_8007(&$sandbox) {
+function tide_event_update_8008(&$sandbox) {
   $new_field = 'field_show_time';
 
   if (!isset($sandbox['total'])) {
