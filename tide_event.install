@@ -363,6 +363,10 @@ function tide_event_update_8008(&$sandbox) {
     $sandbox['current'] = 0;
     $sandbox['processed'] = 0;
     $sandbox['#finished'] = $count ? 0 : 1;
+
+    if (!$count) {
+      return;
+    }
   }
 
   $batch_size = 50;
@@ -385,5 +389,5 @@ function tide_event_update_8008(&$sandbox) {
     $sandbox['processed']++;
   }
 
-  $sandbox['#finished'] = ($sandbox['processed'] / $sandbox['total']);
+  $sandbox['#finished'] = $sandbox['total'] ? ($sandbox['processed'] / $sandbox['total']) : 1;
 }
