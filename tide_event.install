@@ -38,16 +38,6 @@ function tide_event_install() {
       $editorial_workflow->save();
     }
   }
-//
-//  // Remove the user we created.
-//  if ($user = user_load_by_name('Event Author')) {
-//    user_delete($user->id());
-//  }
-//
-//  // Now cleanup the config.
-//  $config_factory = \Drupal::configFactory();
-//  // Remove the image styles that Linkit has installed.
-//  $config_factory->getEditable('user.role.event_author')->delete();
 }
 
 /**
