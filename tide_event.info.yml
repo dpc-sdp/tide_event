@@ -46,7 +46,6 @@ config_devel:
     - field.field.paragraph.event_details.field_paragraph_event_price_to
     - field.field.paragraph.event_details.field_paragraph_link
     - field.field.paragraph.event_details.field_paragraph_location
-    - field.storage.node.field_audience
     - field.storage.node.field_event_category
     - field.storage.node.field_event_description
     - field.storage.node.field_event_details
