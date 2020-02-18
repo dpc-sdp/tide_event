@@ -9,7 +9,7 @@ field_name: field_news_intro_text
 entity_type: node
 bundle: event
 label: 'Introduction Text'
-description: 'Add Introduction text for this event. '
+description: "Add a brief summary of the page. This displays under the page title."
 required: false
 translatable: true
 default_value: {  }
