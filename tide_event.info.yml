@@ -10,7 +10,6 @@ dependencies:
   - dpc-sdp:tide_core
   - dpc-sdp:tide_media
   - dpc-sdp:tide_webform
-  - dpc-sdp:tide_site
 config_devel:
   install:
     - core.base_field_override.node.event.promote
