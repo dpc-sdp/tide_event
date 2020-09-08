@@ -521,11 +521,11 @@ function tide_event_update_8014() {
     'fieldName' => 'field_status',
     'publicName' => 'field_status',
     'enhancer' => [
-      'id' => ''
+      'id' => '',
     ],
     'disabled' => FALSE,
     'advancedOptionsIcon' => '',
-    'enhancer_label' => ''
+    'enhancer_label' => '',
   ];
 
   $config->set('resourceFields', $content);
