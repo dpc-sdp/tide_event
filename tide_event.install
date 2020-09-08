@@ -508,3 +508,26 @@ function tide_event_update_8013() {
   $config->set('hidden', $content);
   $config->save();
 }
+
+/**
+ * Add status fields to json.
+ */
+function tide_event_update_8014() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('jsonapi_extras.jsonapi_resource_config.node--event');
+
+  $content = $config->get('resourceFields');
+  $content['field_status'] = [
+    'fieldName' => 'field_status',
+    'publicName' => 'field_status',
+    'enhancer' => [
+      'id' => ''
+    ],
+    'disabled' => FALSE,
+    'advancedOptionsIcon' => '',
+    'enhancer_label' => ''
+  ];
+
+  $config->set('resourceFields', $content);
+  $config->save();
+}
