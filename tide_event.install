@@ -480,7 +480,7 @@ function tide_event_update_8012() {
     'weight' => 24,
     'label' => 'above',
     'settings' => [
-      'link_to_entity' => false,
+      'link_to_entity' => FALSE,
     ],
     'third_party_settings' => [],
     'type' => 'string',
@@ -502,7 +502,7 @@ function tide_event_update_8013() {
   $dependencies[] = 'field.field.node.event.field_status';
 
   $content = $config->get('hidden');
-  $content['field_status'] = true;
+  $content['field_status'] = TRUE;
 
   $config->set('dependencies.config', $dependencies);
   $config->set('hidden', $content);
