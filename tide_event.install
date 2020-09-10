@@ -574,9 +574,9 @@ function tide_event_update_8015() {
       'type' => 'string',
       'dependencies' => [
         'config' => [
-          'field.storage.node.field_status'
-        ]
-      ]
+          'field.storage.node.field_status',
+        ],
+      ],
     ];
     $config->set('field_settings', $field_settings);
   }
