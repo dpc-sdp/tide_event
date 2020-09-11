@@ -425,3 +425,178 @@ function tide_event_update_8009() {
     }
   }
 }
+
+/**
+ * Create field status.
+ */
+function tide_event_update_8010() {
+  $configs = [
+    'field.storage.node.field_status' => 'field_storage_config',
+    'field.field.node.event.field_status' => 'field_config',
+  ];
+
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_landing_page') . '/config/install'];
+
+  // Check if field already exported to config/sync.
+  foreach ($configs as $config => $type) {
+    $config_read = _tide_read_config($config, $config_location, TRUE);
+    $storage = \Drupal::entityTypeManager()->getStorage($type);
+    $config_entity = $storage->createFromStorageRecord($config_read);
+    $config_entity->save();
+  }
+}
+
+/**
+ * Add status fields to entity form display.
+ */
+function tide_event_update_8011() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.node.event.default');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.node.event.field_status', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_status';
+  }
+
+  $third_party_settings = $config->get('third_party_settings.field_group.group_body_content.children');
+  if (!in_array('field_status', $third_party_settings)) {
+    $third_party_settings[] = 'field_status';
+    $config->set('third_party_settings.field_group.group_body_content.children', $third_party_settings);
+  }
+
+  $content = $config->get('content');
+  if (!isset($content['field_status'])) {
+    $content['field_status'] = [
+      'weight' => 13,
+      'settings' => [
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'string_textfield',
+      'region' => 'content',
+    ];
+    $config->set('content', $content);
+  }
+
+  $config->set('dependencies.config', $dependencies);
+
+  $config->save();
+}
+
+/**
+ * Add status fields to entity view default display.
+ */
+function tide_event_update_8012() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_view_display.node.event.default');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.node.event.field_status', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_status';
+    $config->set('dependencies.config', $dependencies);
+  }
+
+  $content = $config->get('content');
+  if (!isset($content['field_status'])) {
+    $content['field_status'] = [
+      'weight' => 24,
+      'label' => 'above',
+      'settings' => [
+        'link_to_entity' => FALSE,
+      ],
+      'third_party_settings' => [],
+      'type' => 'string',
+      'region' => 'content',
+    ];
+    $config->set('content', $content);
+  }
+
+  $config->save();
+}
+
+/**
+ * Add status fields to entity view teaser display.
+ */
+function tide_event_update_8013() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_view_display.node.event.teaser');
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.node.event.field_status', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_status';
+    $config->set('dependencies.config', $dependencies);
+  }
+
+  $content = $config->get('hidden');
+  if (!isset($content['field_status'])) {
+    $content['field_status'] = TRUE;
+    $config->set('hidden', $content);
+  }
+
+  $config->save();
+}
+
+/**
+ * Add status fields to json.
+ */
+function tide_event_update_8014() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('jsonapi_extras.jsonapi_resource_config.node--event');
+
+  $content = $config->get('resourceFields');
+  if (!isset($content['field_status'])) {
+    $content['field_status'] = [
+      'fieldName' => 'field_status',
+      'publicName' => 'field_status',
+      'enhancer' => [
+        'id' => '',
+      ],
+      'disabled' => FALSE,
+      'advancedOptionsIcon' => '',
+      'enhancer_label' => '',
+    ];
+
+    $config->set('resourceFields', $content);
+  }
+
+  $config->save();
+}
+
+/**
+ * Add status field to search api.
+ */
+function tide_event_update_8015() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('search_api.index.node');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.storage.node.field_status', $dependencies)) {
+    $dependencies[] = 'field.storage.node.field_status';
+    $config->set('dependencies.config', $dependencies);
+  }
+
+  $field_settings = $config->get('field_settings');
+  if (!isset($field_settings['field_status'])) {
+    $field_settings['field_status'] = [
+      'label' => 'Status',
+      'datasource_id' => 'entity:node',
+      'property_path' => 'field_status',
+      'type' => 'string',
+      'dependencies' => [
+        'config' => [
+          'field.storage.node.field_status',
+        ],
+      ],
+    ];
+    $config->set('field_settings', $field_settings);
+  }
+
+  $processor_settings = $config->get('processor_settings.html_filter.fields');
+  if (!in_array('field_status', $processor_settings)) {
+    $processor_settings[] = 'field_status';
+    $config->set('processor_settings.html_filter.fields', $processor_settings);
+  }
+
+  $config->save();
+}
