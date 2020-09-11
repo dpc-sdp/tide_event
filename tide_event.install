@@ -430,10 +430,21 @@ function tide_event_update_8009() {
  * Create field status.
  */
 function tide_event_update_8010() {
+  $configs = [
+    'field.storage.node.field_status' => 'field_storage_config',
+    'field.field.node.event.field_status' => 'field_config',
+  ];
+
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
-  _tide_import_single_config('field.storage.node.field_status', $config_location);
-  _tide_import_single_config('field.field.node.event.field_status', $config_location);
+  $config_location = [drupal_get_path('module', 'tide_landing_page') . '/config/install'];
+
+  // Check if field already exported to config/sync.
+  foreach ($configs as $config => $type) {
+    $config_read = _tide_read_config($config, $config_location, TRUE);
+    $storage = \Drupal::entityTypeManager()->getStorage($type);
+    $config_entity = $storage->createFromStorageRecord($config_read);
+    $config_entity->save();
+  }
 }
 
 /**
