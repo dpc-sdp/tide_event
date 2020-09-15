@@ -436,7 +436,7 @@ function tide_event_update_8010() {
   ];
 
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_landing_page') . '/config/install'];
+  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
 
   // Check if field already exported to config/sync.
   foreach ($configs as $config => $type) {
