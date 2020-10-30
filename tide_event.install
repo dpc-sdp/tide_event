@@ -915,8 +915,16 @@ function tide_event_update_8023() {
   foreach ($configs as $config => $type) {
     $config_read = _tide_read_config($config, $config_location, TRUE);
     $storage = \Drupal::entityTypeManager()->getStorage($type);
-    $id = substr($config, strrpos($config, '.') + 1);
-    if ($storage->load($id) == NULL) {
+
+    $extracted_config_name = $config;
+
+    if (strrpos($config, 'field.storage.') !== FALSE) {
+      $extracted_config_name = str_replace('field.storage.', '', $config);
+    } elseif (strrpos($config, 'field.field.') !== FALSE) {
+      $extracted_config_name = str_replace('field.field.', '', $config);
+    }
+
+    if ($storage->load($extracted_config_name) == NULL) {
       $config_entity = $storage->createFromStorageRecord($config_read);
       $config_entity->save();
     }
