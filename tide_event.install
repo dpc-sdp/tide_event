@@ -600,3 +600,824 @@ function tide_event_update_8015() {
 
   $config->save();
 }
+
+/**
+ * Display updates to event default form.
+ */
+function tide_event_update_8016() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.node.event.default');
+
+  $group_page_header_children = $config->get('third_party_settings.field_group.group_page_header.children');
+  if (!in_array('field_event_details', $group_page_header_children)) {
+    $group_page_header_children[] = 'field_event_details';
+  }
+  if (!in_array('field_audience', $group_page_header_children)) {
+    $group_page_header_children[] = 'field_audience';
+  }
+  if (!in_array('field_event_category', $group_page_header_children)) {
+    $group_page_header_children[] = 'field_event_category';
+  }
+  $config->set('third_party_settings.field_group.group_page_header.children', $group_page_header_children);
+  $config->set('third_party_settings.field_group.group_page_header.label', 'Details');
+
+  $group_body_content_children = $config->get('third_party_settings.field_group.group_body_content.children');
+  if (($key = array_search('field_event_details', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  if (($key = array_search('field_event_category', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  if (($key = array_search('field_audience', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  if (($key = array_search('field_node_link', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+
+  if (!in_array('group_external_link', $group_body_content_children)) {
+    $group_body_content_children[] = 'group_external_link';
+  }
+  if (!in_array('field_show_social_sharing', $group_body_content_children)) {
+    $group_body_content_children[] = 'field_show_social_sharing';
+  }
+  $config->set('third_party_settings.field_group.group_body_content.children', $group_body_content_children);
+  $config->set('third_party_settings.field_group.group_body_content.label', 'Content');
+  $config->set('third_party_settings.field_group.group_body_content.weight', 10);
+
+  $third_party_settings_field_group = $config->get('third_party_settings.field_group');
+  if (!isset($third_party_settings_field_group['group_external_link'])) {
+    $third_party_settings_field_group['group_external_link'] = [
+      'children' => [
+        'field_node_link',
+      ],
+      'parent_name' => 'group_body_content',
+      'weight' => 14,
+      'format_type' => 'fieldset',
+      'format_settings' => [
+        'id' => '',
+        'classes' => '',
+        'effect' => 'none',
+        'description' => '',
+        'required_fields' => true,
+      ],
+      'label' => 'External Link',
+      'region' => 'content',
+    ];
+  }
+
+  $config->set('third_party_settings.field_group', $third_party_settings_field_group);
+
+  $config->set('content.created.weight', 7);
+  $config->set('content.field_audience.weight', 9);
+  $config->set('content.field_event_category.weight', 10);
+  $config->set('content.field_event_details.weight', 8);
+  $config->set('content.field_metatags.weight', 5);
+  $config->set('content.field_node_link.weight', 10);
+  $config->set('content.field_node_site.weight', 15);
+  $config->set('content.field_related_links.weight', 6);
+  $config->set('content.field_show_related_content.weight', 5);
+  $config->set('content.field_show_social_sharing.weight', 13);
+  $config->set('content.field_status.weight', 11);
+  $config->set('content.moderation_state.weight', 12);
+  $config->set('content.path.weight', 10);
+  $config->set('content.promote.weight', 8);
+  $config->set('content.status.weight', 13);
+  $config->set('content.sticky.weight', 9);
+  $config->set('content.uid.weight', 6);
+  $config->set('content.url_redirects.weight', 11);
+
+  $config->save();
+}
+
+/**
+ * Display updates to event link.
+ */
+function tide_event_update_8018() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('field.field.node.event.field_node_link');
+  $config->set('label', 'URL');
+
+  $config->save();
+}
+
+/**
+ * Display updates to event social sharing.
+ */
+function tide_event_update_8019() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('field.field.node.event.field_show_social_sharing');
+  $config->set('label', 'Display Social Sharing');
+
+  $config->save();
+}
+
+/**
+ * Display updates to event date range.
+ */
+function tide_event_update_8020() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('field.field.paragraph.event_details.field_paragraph_date_range');
+  $config->set('required', FALSE);
+  $config->set('default_value', []);
+
+  $config->save();
+}
+
+/**
+ * Display updates to event default form to hide fields.
+ */
+function tide_event_update_8021() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.node.event.default');
+
+  $group_section_1_children = $config->get('third_party_settings.field_group.group_section_1.children');
+  if (($key = array_search('group_event_author', $group_section_1_children)) !== false) {
+    unset($group_section_1_children[$key]);
+  }
+  $config->set('third_party_settings.field_group.group_section_1.children', $group_section_1_children);
+
+  $group_page_header_children = $config->get('third_party_settings.field_group.group_page_header.children');
+  if (($key = array_search('field_news_intro_text', $group_page_header_children)) !== false) {
+    unset($group_page_header_children[$key]);
+  }
+  if (($key = array_search('field_event_description', $group_page_header_children)) !== false) {
+    unset($group_page_header_children[$key]);
+  }
+  $config->set('third_party_settings.field_group.group_page_header.children', $group_page_header_children);
+
+  $group_right_column_children = $config->get('third_party_settings.field_group.group_right_column.children');
+  if (($key = array_search('group_social_sharing', $group_right_column_children)) !== false) {
+    unset($group_right_column_children[$key]);
+  }
+  $config->set('third_party_settings.field_group.group_right_column.children', $group_right_column_children);
+  $config->set('third_party_settings.field_group.group_right_column.weight', 23);
+  $config->set('third_party_settings.field_group.group_right_column.region', 'hidden');
+
+  $config->set('third_party_settings.field_group.group_contact.region', 'hidden');
+
+  $group_body_content_children = $config->get('third_party_settings.field_group.group_body_content.children');
+  if (($key = array_search('field_status', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  if (($key = array_search('field_event_details', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  if (($key = array_search('field_event_category', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  if (($key = array_search('field_audience', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  if (($key = array_search('field_node_link', $group_body_content_children)) !== false) {
+    unset($group_body_content_children[$key]);
+  }
+  $config->set('third_party_settings.field_group.group_body_content.children', $group_body_content_children);
+
+  $config->set('third_party_settings.field_group.group_social_sharing.children', []);
+  $config->set('third_party_settings.field_group.group_social_sharing.parent_name', '');
+  $config->set('third_party_settings.field_group.group_social_sharing.weight', 22);
+
+  $config->set('third_party_settings.field_group.group_related_links.region', 'hidden');
+
+  $config->set('third_party_settings.field_group.group_event_author.parent_name', '');
+  $config->set('third_party_settings.field_group.group_event_author.weight', 22);
+  $config->set('third_party_settings.field_group.group_event_author.region', 'hidden');
+
+  $config->set('content.created.weight', 5);
+
+  $content = $config->get('content');
+  if (isset($content['field_landing_page_contact'])) {
+    unset($content['field_landing_page_contact']);
+  }
+  if (isset($content['field_landing_page_show_contact'])) {
+    unset($content['field_landing_page_show_contact']);
+  }
+  if (isset($content['field_news_intro_text'])) {
+    unset($content['field_news_intro_text']);
+  }
+  if (isset($content['field_node_author'])) {
+    unset($content['field_node_author']);
+  }
+  if (isset($content['field_node_email'])) {
+    unset($content['field_node_email']);
+  }
+  if (isset($content['field_node_phone'])) {
+    unset($content['field_node_phone']);
+  }
+  if (isset($content['field_related_links'])) {
+    unset($content['field_related_links']);
+  }
+  if (isset($content['field_show_related_content'])) {
+    unset($content['field_show_related_content']);
+  }
+  if (isset($content['field_status'])) {
+    unset($content['field_status']);
+  }
+  if (isset($content['field_event_description'])) {
+    unset($content['field_event_description']);
+  }
+  $config->set('content', $content);
+
+  $config->set('content.field_metatags.weight', 3);
+  $config->set('content.field_node_site.weight', 13);
+  $config->set('content.field_tags.weight', 2);
+  $config->set('content.field_topic.weight', 1);
+  $config->set('content.moderation_state.weight', 10);
+  $config->set('content.path.weight', 8);
+  $config->set('content.promote.weight', 6);
+  $config->set('content.status.weight', 11);
+  $config->set('content.sticky.weight', 7);
+  $config->set('content.uid.weight', 4);
+  $config->set('content.url_redirects.weight', 9);
+
+  $hidden = $config->get('hidden');
+  if (!isset($hidden['field_event_description'])) {
+    $hidden['field_event_description'] = TRUE;
+  }
+  if (!isset($hidden['field_landing_page_contact'])) {
+    $hidden['field_landing_page_contact'] = TRUE;
+  }
+  if (!isset($hidden['field_landing_page_show_contact'])) {
+    $hidden['field_landing_page_show_contact'] = TRUE;
+  }
+  if (!isset($hidden['field_news_intro_text'])) {
+    $hidden['field_news_intro_text'] = TRUE;
+  }
+  if (!isset($hidden['field_node_author'])) {
+    $hidden['field_node_author'] = TRUE;
+  }
+  if (!isset($hidden['field_node_email'])) {
+    $hidden['field_node_email'] = TRUE;
+  }
+  if (!isset($hidden['field_node_phone'])) {
+    $hidden['field_node_phone'] = TRUE;
+  }
+  if (!isset($hidden['field_related_links'])) {
+    $hidden['field_related_links'] = TRUE;
+  }
+  if (!isset($hidden['field_show_related_content'])) {
+    $hidden['field_show_related_content'] = TRUE;
+  }
+  if (!isset($hidden['field_show_content_rating'])) {
+    $hidden['field_show_content_rating'] = TRUE;
+  }
+  if (!isset($hidden['field_status'])) {
+    $hidden['field_status'] = TRUE;
+  }
+  $config->set('hidden', $hidden);
+
+  $config->save();
+}
+
+/**
+ * Update price label for event content type price from field.
+ */
+function tide_event_update_8022() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('field.field.paragraph.event_details.field_paragraph_event_price_from');
+
+  $config->set('description', 'Leave blank if no cost/free');
+
+  $config->save();
+}
+
+/**
+ * Import new field configuration for event content type and event details paragraph.
+ */
+function tide_event_update_8023() {
+  $configs = [
+    'field.storage.node.field_event_cta_text' => 'field_storage_config',
+    'field.storage.node.field_is_event_series' => 'field_storage_config',
+    'field.storage.node.field_parent_event' => 'field_storage_config',
+    'field.storage.paragraph.field_date_not_applicable' => 'field_storage_config',
+    'field.storage.paragraph.field_event_availability' => 'field_storage_config',
+    'field.storage.paragraph.field_paragraph_attendence_mode' => 'field_storage_config',
+    'field.storage.paragraph.field_paragraph_event_capacity' => 'field_storage_config',
+    'field.storage.paragraph.field_paragraph_event_duration' => 'field_storage_config',
+    'field.storage.paragraph.field_paragraph_event_schedule' => 'field_storage_config',
+    'field.field.node.event.field_event_cta_text' => 'field_config',
+    'field.field.node.event.field_is_event_series' => 'field_config',
+    'field.field.node.event.field_parent_event' => 'field_config',
+    'field.field.node.event.field_landing_page_component' => 'field_config',
+    'field.field.paragraph.event_details.field_date_not_applicable' => 'field_config',
+    'field.field.paragraph.event_details.field_event_availability' => 'field_config',
+    'field.field.paragraph.event_details.field_paragraph_attendence_mode' => 'field_config',
+    'field.field.paragraph.event_details.field_paragraph_event_capacity' => 'field_config',
+    'field.field.paragraph.event_details.field_paragraph_event_duration' => 'field_config',
+    'field.field.paragraph.event_details.field_paragraph_event_schedule' => 'field_config',
+  ];
+
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+
+  // Check if field already exported to config/sync.
+  foreach ($configs as $config => $type) {
+    $config_read = _tide_read_config($config, $config_location, TRUE);
+    $storage = \Drupal::entityTypeManager()->getStorage($type);
+    $id = substr($config, strrpos($config, '.') + 1);
+    if ($storage->load($id) == NULL) {
+      $config_entity = $storage->createFromStorageRecord($config_read);
+      $config_entity->save();
+    }
+  }
+}
+
+/**
+ * Display updates to event landing page component.
+ */
+function tide_event_update_8024() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('field.field.node.event.field_landing_page_component');
+  $config->set('label', 'Body components');
+
+  $config->save();
+}
+
+/**
+ * Add new fields to event default form.
+ */
+function tide_event_update_8025() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.node.event.default');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.node.event.field_is_event_series', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_is_event_series';
+  }
+  if (!in_array('field.field.node.event.field_parent_event', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_parent_event';
+  }
+  if (!in_array('field.field.node.event.field_event_cta_text', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_event_cta_text';
+  }
+  $config->set('dependencies.config', $dependencies);
+
+  $group_page_header_children = $config->get('third_party_settings.field_group.group_page_header.children');
+  if (!in_array('field_is_event_series', $group_page_header_children)) {
+    $group_page_header_children[] = 'field_is_event_series';
+  }
+  if (!in_array('field_parent_event', $group_page_header_children)) {
+    $group_page_header_children[] = 'field_parent_event';
+  }
+  $config->set('third_party_settings.field_group.group_page_header.children', $group_page_header_children);
+
+  $group_external_content_children = $config->get('third_party_settings.field_group.group_external_link.children');
+  if (!in_array('field_event_cta_text', $group_external_content_children)) {
+    $group_external_content_children[] = 'field_event_cta_text';
+  }
+  $config->set('third_party_settings.field_group.group_external_link.children', $group_external_content_children);
+
+  $config->set('third_party_settings.field_group.group_right_column.weight', 25);
+  $config->set('third_party_settings.field_group.group_body_content.weight', 9);
+  $config->set('third_party_settings.field_group.group_social_sharing.weight', 23);
+  $config->set('third_party_settings.field_group.group_event_author.weight', 24);
+
+  $config->set('content.created.weight', 7);
+  $config->set('content.field_audience.weight', 7);
+  $config->set('content.field_event_category.weight', 8);
+  $config->set('content.field_event_details.weight', 4);
+  $config->set('content.field_landing_page_summary.weight', 3);
+  $config->set('content.field_metatags.weight', 5);
+  $config->set('content.field_node_site.weight', 14);
+  $config->set('content.field_tags.weight', 4);
+  $config->set('content.field_topic.weight', 3);
+  $config->set('content.moderation_state.weight', 12);
+  $config->set('content.path.weight', 10);
+  $config->set('content.promote.weight', 8);
+  $config->set('content.status.weight', 13);
+  $config->set('content.sticky.weight', 9);
+  $config->set('content.uid.weight', 6);
+  $config->set('content.url_redirects.weight', 11);
+  $config->set('content.body.weight', 13);
+  $config->set('content.field_show_social_sharing.weight', 15);
+  $config->set('content.field_landing_page_component.weight', 14);
+
+  $content = $config->get('content');
+  if (!isset($content['field_is_event_series'])) {
+    $content['field_is_event_series'] = [
+      'weight' => 5,
+      'settings' => [
+        'display_label' => TRUE,
+      ],
+      'third_party_settings' => [],
+      'type' => 'boolean_checkbox',
+      'region' => 'content',
+    ];
+  }
+  if (!isset($content['field_parent_event'])) {
+    $content['field_parent_event'] = [
+      'weight' => 6,
+      'settings' => [
+        'match_operator' => 'CONTAINS',
+        'match_limit' => 10,
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'entity_reference_autocomplete',
+      'region' => 'content',
+    ];
+  }
+  if (!isset($content['field_event_cta_text'])) {
+    $content['field_event_cta_text'] = [
+      'weight' => 11,
+      'settings' => [
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'string_textfield',
+      'region' => 'content',
+    ];
+  }
+  $config->set('content', $content);
+
+  $config->save();
+}
+
+/**
+ * Add new fields to event default view.
+ */
+function tide_event_update_8026() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_view_display.node.event.default');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.node.event.field_is_event_series', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_is_event_series';
+  }
+  if (!in_array('field.field.node.event.field_parent_event', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_parent_event';
+  }
+  if (!in_array('field.field.node.event.field_event_cta_text', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_event_cta_text';
+  }
+  $config->set('dependencies.config', $dependencies);
+
+  $content = $config->get('content');
+  if (!isset($content['field_is_event_series'])) {
+    $content['field_is_event_series'] = [
+      'weight' => 27,
+      'label' => 'above',
+      'settings' => [
+        'format' => 'default',
+        'format_custom_false' => '',
+        'format_custom_true' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'boolean',
+      'region' => 'content',
+    ];
+  }
+  if (!isset($content['field_parent_event'])) {
+    $content['field_parent_event'] = [
+      'weight' => 28,
+      'label' => 'above',
+      'settings' => [
+        'link' => TRUE,
+      ],
+      'third_party_settings' => [],
+      'type' => 'entity_reference_label',
+      'region' => 'content',
+    ];
+  }
+  if (!isset($content['field_event_cta_text'])) {
+    $content['field_event_cta_text'] = [
+      'weight' => 29,
+      'label' => 'above',
+      'settings' => [
+        'link_to_entity' => FALSE,
+      ],
+      'third_party_settings' => [],
+      'type' => 'string',
+      'region' => 'content',
+    ];
+  }
+  $config->set('content', $content);
+
+  $hidden = $config->get('hidden');
+  if (!isset($hidden['field_event_cta_text'])) {
+    $hidden['field_event_cta_text'] = TRUE;
+  }
+  if (!isset($hidden['field_is_event_series'])) {
+    $hidden['field_is_event_series'] = TRUE;
+  }
+  if (!isset($hidden['field_parent_event'])) {
+    $hidden['field_parent_event'] = TRUE;
+  }
+  $config->set('hidden', $hidden);
+
+  $config->save();
+}
+
+/**
+ * Add new fields to event teaser.
+ */
+function tide_event_update_8027() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_view_display.node.event.teaser');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.node.event.field_is_event_series', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_is_event_series';
+  }
+  if (!in_array('field.field.node.event.field_parent_event', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_parent_event';
+  }
+  if (!in_array('field.field.node.event.field_event_cta_text', $dependencies)) {
+    $dependencies[] = 'field.field.node.event.field_event_cta_text';
+  }
+  $config->set('dependencies.config', $dependencies);
+
+  $hidden = $config->get('hidden');
+  if (!isset($hidden['field_is_event_series'])) {
+    $hidden['field_is_event_series'] = TRUE;
+  }
+  if (!isset($hidden['field_parent_event'])) {
+    $hidden['field_parent_event'] = TRUE;
+  }
+  if (!isset($hidden['field_event_cta_text'])) {
+    $hidden['field_event_cta_text'] = TRUE;
+  }
+  $config->set('hidden', $hidden);
+
+  $config->save();
+}
+
+/**
+ * Update paragraph event default form with new fields.
+ */
+function tide_event_update_8028() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.paragraph.event_details.default');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.paragraph.event_details.field_date_not_applicable', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_date_not_applicable';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_event_availability', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_event_availability';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_attendence_mode', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_attendence_mode';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_event_capacity', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_event_capacity';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_event_duration', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_event_duration';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_event_schedule', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_event_schedule';
+  }
+  $config->set('dependencies.config', $dependencies);
+
+  $content = $config->get('content');
+  if (!isset($content['field_date_not_applicable'])) {
+    $content['field_date_not_applicable'] = [
+      'weight' => 0,
+      'settings' => [
+        'display_label' => TRUE,
+      ],
+      'third_party_settings' => [],
+      'type' => 'boolean_checkbox',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_event_availability'])) {
+    $content['field_event_availability'] = [
+      'weight' => 6,
+      'settings' => [
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'string_textfield',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_attendence_mode'])) {
+    $content['field_paragraph_attendence_mode'] = [
+      'weight' => 4,
+      'settings' => [],
+      'third_party_settings' => [],
+      'type' => 'options_select',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_event_capacity'])) {
+    $content['field_paragraph_event_capacity'] = [
+      'weight' => 8,
+      'settings' => [
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'string_textfield',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_event_duration'])) {
+    $content['field_paragraph_event_duration'] = [
+      'weight' => 3,
+      'settings' => [
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'string_textfield',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_event_schedule'])) {
+    $content['field_paragraph_event_schedule'] = [
+      'weight' => 2,
+      'settings' => [
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'string_textfield',
+      'region' => 'content',
+    ];
+  }
+
+  if (isset($content['field_paragraph_event_price_from'])) {
+    $content['field_paragraph_event_price_from'] = [
+      'weight' => 7,
+      'settings' => [
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'string_textfield',
+      'region' => 'content',
+    ];
+  }
+
+  if (isset($content['field_paragraph_location'])) {
+    $content['field_paragraph_location'] = [
+      'weight' => 5,
+      'settings' => [],
+      'third_party_settings' => [],
+      'type' => 'address_default',
+      'region' => 'content',
+    ];
+  }
+
+  if (isset($content['field_paragraph_event_price_to'])) {
+    unset($content['field_paragraph_event_price_to']);
+  }
+
+  if (isset($content['field_paragraph_link'])) {
+    unset($content['field_paragraph_link']);
+  }
+
+  if (isset($content['field_show_time'])) {
+    unset($content['field_show_time']);
+  }
+  $config->set('content', $content);
+
+  $config->set('content.field_event_requirements.weight', 9);
+  $config->set('content.field_paragraph_date_range.weight', 1);
+
+  $hidden = $config->get('hidden');
+  if (!isset($hidden['field_paragraph_event_price_to'])) {
+    $hidden['field_paragraph_event_price_to'] = TRUE;
+  }
+
+  if (!isset($hidden['field_paragraph_link'])) {
+    $hidden['field_paragraph_link'] = TRUE;
+  }
+
+  if (!isset($hidden['field_show_time'])) {
+    $hidden['field_show_time'] = TRUE;
+  }
+  $config->set('hidden', $hidden);
+
+  $config->save();
+}
+
+/**
+ * Update paragraph event default view with new fields.
+ */
+function tide_event_update_8029() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_view_display.paragraph.event_details.default');
+
+  $dependencies = $config->get('dependencies.config');
+  if (!in_array('field.field.paragraph.event_details.field_date_not_applicable', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_date_not_applicable';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_event_availability', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_event_availability';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_attendence_mode', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_attendence_mode';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_event_capacity', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_event_capacity';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_event_duration', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_event_duration';
+  }
+  if (!in_array('field.field.paragraph.event_details.field_paragraph_event_schedule', $dependencies)) {
+    $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_event_schedule';
+  }
+  $config->set('dependencies.config', $dependencies);
+
+  $module_dependencies = $config->get('dependencies.module');
+  if (!in_array('options', $module_dependencies)) {
+    $module_dependencies[] = 'options';
+  }
+  $config->set('dependencies.module', $module_dependencies);
+
+  $content = $config->get('content');
+  if (!isset($content['field_date_not_applicable'])) {
+    $content['field_date_not_applicable'] = [
+      'weight' => 6,
+      'label' => 'above',
+      'settings' => [
+        'format' => 'default',
+        'format_custom_false' => '',
+        'format_custom_true' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'boolean',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_event_availability'])) {
+    $content['field_event_availability'] = [
+      'weight' => 10,
+      'label' => 'above',
+      'settings' => [
+        'link_to_entity' => FALSE
+      ],
+      'third_party_settings' => [],
+      'type' => 'string',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_attendence_mode'])) {
+    $content['field_paragraph_attendence_mode'] = [
+      'weight' => 9,
+      'label' => 'above',
+      'settings' => [],
+      'third_party_settings' => [],
+      'type' => 'list_default',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_event_capacity'])) {
+    $content['field_paragraph_event_capacity'] = [
+      'weight' => 11,
+      'label' => 'above',
+      'settings' => [
+        'link_to_entity' => FALSE
+      ],
+      'third_party_settings' => [],
+      'type' => 'string',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_event_duration'])) {
+    $content['field_paragraph_event_duration'] = [
+      'weight' => 8,
+      'label' => 'above',
+      'settings' => [
+        'link_to_entity' => FALSE
+      ],
+      'third_party_settings' => [],
+      'type' => 'string',
+      'region' => 'content',
+    ];
+  }
+
+  if (!isset($content['field_paragraph_event_schedule'])) {
+    $content['field_paragraph_event_schedule'] = [
+      'weight' => 7,
+      'label' => 'above',
+      'settings' => [
+        'link_to_entity' => FALSE
+      ],
+      'third_party_settings' => [],
+      'type' => 'string',
+      'region' => 'content',
+    ];
+  }
+
+  $config->set('content', $content);
+
+  $config->save();
+}

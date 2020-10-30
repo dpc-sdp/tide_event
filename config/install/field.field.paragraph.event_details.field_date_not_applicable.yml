@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date_not_applicable
+    - paragraphs.paragraphs_type.event_details
+id: paragraph.event_details.field_date_not_applicable
+field_name: field_date_not_applicable
+entity_type: paragraph
+bundle: event_details
+label: 'Date not applicable'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

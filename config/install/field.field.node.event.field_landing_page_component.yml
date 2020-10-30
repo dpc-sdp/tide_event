@@ -1,0 +1,152 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_landing_page_component
+    - node.type.event
+    - paragraphs.paragraphs_type.accordion
+    - paragraphs.paragraphs_type.basic_text
+    - paragraphs.paragraphs_type.call_to_action
+    - paragraphs.paragraphs_type.card_carousel
+    - paragraphs.paragraphs_type.card_event
+    - paragraphs.paragraphs_type.card_event_auto
+    - paragraphs.paragraphs_type.card_promotion
+    - paragraphs.paragraphs_type.card_promotion_auto
+  module:
+    - entity_reference_revisions
+id: node.event.field_landing_page_component
+field_name: field_landing_page_component
+entity_type: node
+bundle: event
+label: 'Body components'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      accordion: accordion
+      basic_text: basic_text
+      call_to_action: call_to_action
+      card_carousel: card_carousel
+      card_event: card_event
+      card_event_auto: card_event_auto
+      card_promotion: card_promotion
+      card_promotion_auto: card_promotion_auto
+    target_bundles_drag_drop:
+      accordion:
+        enabled: true
+        weight: 38
+      accordion_content:
+        weight: 39
+        enabled: false
+      banner:
+        weight: 40
+        enabled: false
+      basic_text:
+        enabled: true
+        weight: 41
+      call_to_action:
+        enabled: true
+        weight: 42
+      call_to_action_image:
+        weight: 43
+        enabled: false
+      card_carousel:
+        enabled: true
+        weight: 44
+      card_event:
+        enabled: true
+        weight: 45
+      card_event_auto:
+        enabled: true
+        weight: 46
+      card_keydates:
+        weight: 47
+        enabled: false
+      card_navigation:
+        weight: 48
+        enabled: false
+      card_navigation_auto:
+        weight: 49
+        enabled: false
+      card_navigation_featured:
+        weight: 50
+        enabled: false
+      card_navigation_featured_auto:
+        weight: 51
+        enabled: false
+      card_promotion:
+        enabled: true
+        weight: 52
+      card_promotion_auto:
+        enabled: true
+        weight: 53
+      complex_image:
+        weight: 54
+        enabled: false
+      contact_us:
+        weight: 55
+        enabled: false
+      embedded_search_form:
+        weight: 56
+        enabled: false
+      embedded_webform:
+        weight: 57
+        enabled: false
+      event_details:
+        weight: 58
+        enabled: false
+      featured_news:
+        weight: 59
+        enabled: false
+      form_embed_openforms:
+        weight: 60
+        enabled: false
+      hero_banner_with_cta:
+        weight: 61
+        enabled: false
+      introduction_banner:
+        weight: 62
+        enabled: false
+      key_journeys:
+        weight: 63
+        enabled: false
+      keydates:
+        weight: 64
+        enabled: false
+      latest_events:
+        weight: 65
+        enabled: false
+      links:
+        weight: 66
+        enabled: false
+      media_gallery:
+        weight: 67
+        enabled: false
+      news_listing:
+        weight: 68
+        enabled: false
+      phone:
+        weight: 69
+        enabled: false
+      related_links:
+        weight: 70
+        enabled: false
+      social_link:
+        weight: 71
+        enabled: false
+      timeline:
+        weight: 72
+        enabled: false
+      timelines:
+        weight: 73
+        enabled: false
+      user_authentication_block:
+        weight: 74
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_paragraph_attendence_mode
+    - paragraphs.paragraphs_type.event_details
+  module:
+    - options
+id: paragraph.event_details.field_paragraph_attendence_mode
+field_name: field_paragraph_attendence_mode
+entity_type: paragraph
+bundle: event_details
+label: 'Attendence mode'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: online
+default_value_callback: ''
+settings: {  }
+field_type: list_string
