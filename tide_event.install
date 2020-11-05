@@ -1063,47 +1063,6 @@ function tide_event_update_8026() {
   }
   $config->set('dependencies.config', $dependencies);
 
-  $content = $config->get('content');
-  if (!isset($content['field_is_event_series'])) {
-    $content['field_is_event_series'] = [
-      'weight' => 27,
-      'label' => 'above',
-      'settings' => [
-        'format' => 'default',
-        'format_custom_false' => '',
-        'format_custom_true' => '',
-      ],
-      'third_party_settings' => [],
-      'type' => 'boolean',
-      'region' => 'content',
-    ];
-  }
-  if (!isset($content['field_parent_event'])) {
-    $content['field_parent_event'] = [
-      'weight' => 28,
-      'label' => 'above',
-      'settings' => [
-        'link' => TRUE,
-      ],
-      'third_party_settings' => [],
-      'type' => 'entity_reference_label',
-      'region' => 'content',
-    ];
-  }
-  if (!isset($content['field_event_cta_text'])) {
-    $content['field_event_cta_text'] = [
-      'weight' => 29,
-      'label' => 'above',
-      'settings' => [
-        'link_to_entity' => FALSE,
-      ],
-      'third_party_settings' => [],
-      'type' => 'string',
-      'region' => 'content',
-    ];
-  }
-  $config->set('content', $content);
-
   $hidden = $config->get('hidden');
   if (!isset($hidden['field_event_cta_text'])) {
     $hidden['field_event_cta_text'] = TRUE;
@@ -1113,6 +1072,9 @@ function tide_event_update_8026() {
   }
   if (!isset($hidden['field_parent_event'])) {
     $hidden['field_parent_event'] = TRUE;
+  }
+  if (!isset($hidden['field_event_cta_text'])) {
+    $hidden['field_event_cta_text'] = TRUE;
   }
   $config->set('hidden', $hidden);
 
