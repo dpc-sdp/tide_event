@@ -622,16 +622,16 @@ function tide_event_update_8016() {
   $config->set('third_party_settings.field_group.group_page_header.label', 'Details');
 
   $group_body_content_children = $config->get('third_party_settings.field_group.group_body_content.children');
-  if (($key = array_search('field_event_details', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_event_details', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
-  if (($key = array_search('field_event_category', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_event_category', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
-  if (($key = array_search('field_audience', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_audience', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
-  if (($key = array_search('field_node_link', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_node_link', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
 
@@ -659,7 +659,7 @@ function tide_event_update_8016() {
         'classes' => '',
         'effect' => 'none',
         'description' => '',
-        'required_fields' => true,
+        'required_fields' => TRUE,
       ],
       'label' => 'External Link',
       'region' => 'content',
@@ -732,22 +732,22 @@ function tide_event_update_8021() {
   $config = $config_factory->getEditable('core.entity_form_display.node.event.default');
 
   $group_section_1_children = $config->get('third_party_settings.field_group.group_section_1.children');
-  if (($key = array_search('group_event_author', $group_section_1_children)) !== false) {
+  if (($key = array_search('group_event_author', $group_section_1_children)) !== FALSE) {
     unset($group_section_1_children[$key]);
   }
   $config->set('third_party_settings.field_group.group_section_1.children', $group_section_1_children);
 
   $group_page_header_children = $config->get('third_party_settings.field_group.group_page_header.children');
-  if (($key = array_search('field_news_intro_text', $group_page_header_children)) !== false) {
+  if (($key = array_search('field_news_intro_text', $group_page_header_children)) !== FALSE) {
     unset($group_page_header_children[$key]);
   }
-  if (($key = array_search('field_event_description', $group_page_header_children)) !== false) {
+  if (($key = array_search('field_event_description', $group_page_header_children)) !== FALSE) {
     unset($group_page_header_children[$key]);
   }
   $config->set('third_party_settings.field_group.group_page_header.children', $group_page_header_children);
 
   $group_right_column_children = $config->get('third_party_settings.field_group.group_right_column.children');
-  if (($key = array_search('group_social_sharing', $group_right_column_children)) !== false) {
+  if (($key = array_search('group_social_sharing', $group_right_column_children)) !== FALSE) {
     unset($group_right_column_children[$key]);
   }
   $config->set('third_party_settings.field_group.group_right_column.children', $group_right_column_children);
@@ -757,19 +757,19 @@ function tide_event_update_8021() {
   $config->set('third_party_settings.field_group.group_contact.region', 'hidden');
 
   $group_body_content_children = $config->get('third_party_settings.field_group.group_body_content.children');
-  if (($key = array_search('field_status', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_status', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
-  if (($key = array_search('field_event_details', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_event_details', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
-  if (($key = array_search('field_event_category', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_event_category', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
-  if (($key = array_search('field_audience', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_audience', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
-  if (($key = array_search('field_node_link', $group_body_content_children)) !== false) {
+  if (($key = array_search('field_node_link', $group_body_content_children)) !== FALSE) {
     unset($group_body_content_children[$key]);
   }
   $config->set('third_party_settings.field_group.group_body_content.children', $group_body_content_children);
@@ -883,7 +883,8 @@ function tide_event_update_8022() {
 }
 
 /**
- * Import new field configuration for event content type and event details paragraph.
+ * Import new field configuration for event content type
+ * and event details paragraph.
  */
 function tide_event_update_8023() {
   $configs = [
@@ -1327,7 +1328,7 @@ function tide_event_update_8029() {
       'weight' => 10,
       'label' => 'above',
       'settings' => [
-        'link_to_entity' => FALSE
+        'link_to_entity' => FALSE,
       ],
       'third_party_settings' => [],
       'type' => 'string',
@@ -1351,7 +1352,7 @@ function tide_event_update_8029() {
       'weight' => 11,
       'label' => 'above',
       'settings' => [
-        'link_to_entity' => FALSE
+        'link_to_entity' => FALSE,
       ],
       'third_party_settings' => [],
       'type' => 'string',
@@ -1364,7 +1365,7 @@ function tide_event_update_8029() {
       'weight' => 8,
       'label' => 'above',
       'settings' => [
-        'link_to_entity' => FALSE
+        'link_to_entity' => FALSE,
       ],
       'third_party_settings' => [],
       'type' => 'string',
@@ -1377,7 +1378,7 @@ function tide_event_update_8029() {
       'weight' => 7,
       'label' => 'above',
       'settings' => [
-        'link_to_entity' => FALSE
+        'link_to_entity' => FALSE,
       ],
       'third_party_settings' => [],
       'type' => 'string',
