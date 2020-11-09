@@ -883,7 +883,7 @@ function tide_event_update_8022() {
 }
 
 /**
- * Import new field configuration for event content type
+ * Import new field configuration for event content type.
  */
 function tide_event_update_8023() {
   $configs = [
