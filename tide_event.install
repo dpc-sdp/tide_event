@@ -884,7 +884,6 @@ function tide_event_update_8022() {
 
 /**
  * Import new field configuration for event content type
- * and event details paragraph.
  */
 function tide_event_update_8023() {
   $configs = [
@@ -919,7 +918,8 @@ function tide_event_update_8023() {
 
     if (strrpos($config, 'field.storage.') !== FALSE) {
       $extracted_config_name = str_replace('field.storage.', '', $config);
-    } elseif (strrpos($config, 'field.field.') !== FALSE) {
+    }
+    elseif (strrpos($config, 'field.field.') !== FALSE) {
       $extracted_config_name = str_replace('field.field.', '', $config);
     }
 
