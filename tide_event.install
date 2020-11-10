@@ -58,6 +58,13 @@ function tide_event_install() {
       $config->set('bundles', $bundles)->save();
     }
   }
+
+  tide_event_update_8024();
+  tide_event_update_8025();
+  tide_event_update_8026();
+  tide_event_update_8027();
+  tide_event_update_8028();
+  tide_event_update_8029();
 }
 
 /**
@@ -952,9 +959,6 @@ function tide_event_update_8025() {
   if (!in_array('field.field.node.event.field_is_event_series', $dependencies)) {
     $dependencies[] = 'field.field.node.event.field_is_event_series';
   }
-  if (!in_array('field.field.node.event.field_parent_event', $dependencies)) {
-    $dependencies[] = 'field.field.node.event.field_parent_event';
-  }
   if (!in_array('field.field.node.event.field_event_cta_text', $dependencies)) {
     $dependencies[] = 'field.field.node.event.field_event_cta_text';
   }
@@ -963,9 +967,6 @@ function tide_event_update_8025() {
   $group_page_header_children = $config->get('third_party_settings.field_group.group_page_header.children');
   if (!in_array('field_is_event_series', $group_page_header_children)) {
     $group_page_header_children[] = 'field_is_event_series';
-  }
-  if (!in_array('field_parent_event', $group_page_header_children)) {
-    $group_page_header_children[] = 'field_parent_event';
   }
   $config->set('third_party_settings.field_group.group_page_header.children', $group_page_header_children);
 
@@ -1012,20 +1013,6 @@ function tide_event_update_8025() {
       'region' => 'content',
     ];
   }
-  if (!isset($content['field_parent_event'])) {
-    $content['field_parent_event'] = [
-      'weight' => 6,
-      'settings' => [
-        'match_operator' => 'CONTAINS',
-        'match_limit' => 10,
-        'size' => 60,
-        'placeholder' => '',
-      ],
-      'third_party_settings' => [],
-      'type' => 'entity_reference_autocomplete',
-      'region' => 'content',
-    ];
-  }
   if (!isset($content['field_event_cta_text'])) {
     $content['field_event_cta_text'] = [
       'weight' => 11,
@@ -1054,9 +1041,6 @@ function tide_event_update_8026() {
   if (!in_array('field.field.node.event.field_is_event_series', $dependencies)) {
     $dependencies[] = 'field.field.node.event.field_is_event_series';
   }
-  if (!in_array('field.field.node.event.field_parent_event', $dependencies)) {
-    $dependencies[] = 'field.field.node.event.field_parent_event';
-  }
   if (!in_array('field.field.node.event.field_event_cta_text', $dependencies)) {
     $dependencies[] = 'field.field.node.event.field_event_cta_text';
   }
@@ -1068,9 +1052,6 @@ function tide_event_update_8026() {
   }
   if (!isset($hidden['field_is_event_series'])) {
     $hidden['field_is_event_series'] = TRUE;
-  }
-  if (!isset($hidden['field_parent_event'])) {
-    $hidden['field_parent_event'] = TRUE;
   }
   if (!isset($hidden['field_event_cta_text'])) {
     $hidden['field_event_cta_text'] = TRUE;
@@ -1091,9 +1072,6 @@ function tide_event_update_8027() {
   if (!in_array('field.field.node.event.field_is_event_series', $dependencies)) {
     $dependencies[] = 'field.field.node.event.field_is_event_series';
   }
-  if (!in_array('field.field.node.event.field_parent_event', $dependencies)) {
-    $dependencies[] = 'field.field.node.event.field_parent_event';
-  }
   if (!in_array('field.field.node.event.field_event_cta_text', $dependencies)) {
     $dependencies[] = 'field.field.node.event.field_event_cta_text';
   }
@@ -1102,9 +1080,6 @@ function tide_event_update_8027() {
   $hidden = $config->get('hidden');
   if (!isset($hidden['field_is_event_series'])) {
     $hidden['field_is_event_series'] = TRUE;
-  }
-  if (!isset($hidden['field_parent_event'])) {
-    $hidden['field_parent_event'] = TRUE;
   }
   if (!isset($hidden['field_event_cta_text'])) {
     $hidden['field_event_cta_text'] = TRUE;
