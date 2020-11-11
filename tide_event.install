@@ -721,7 +721,7 @@ function tide_event_update_8018() {
 function tide_event_update_8019() {
   $config_factory = \Drupal::configFactory();
   $config = $config_factory->getEditable('field.field.node.event.field_show_social_sharing');
-  $config->set('label', 'Display Social Sharing');
+  $config->set('label', 'Display Social Sharing?');
 
   $config->save();
 }
@@ -983,6 +983,12 @@ function tide_event_update_8025() {
   }
   $config->set('third_party_settings.field_group.group_external_link.children', $group_external_content_children);
 
+  $third_party_settings = $config->get('third_party_settings.field_group.group_body_content.children');
+  if (!in_array('field_landing_page_component', $third_party_settings)) {
+    $third_party_settings[] = 'field_landing_page_component';
+  }
+  $config->set('third_party_settings.field_group.group_body_content.children', $third_party_settings);
+
   $config->set('third_party_settings.field_group.group_right_column.weight', 25);
   $config->set('third_party_settings.field_group.group_body_content.weight', 9);
   $config->set('third_party_settings.field_group.group_social_sharing.weight', 23);
@@ -1088,6 +1094,9 @@ function tide_event_update_8026() {
   if (!isset($hidden['field_event_cta_text'])) {
     $hidden['field_event_cta_text'] = TRUE;
   }
+  if (!isset($hidden['field_landing_page_component'])) {
+    $hidden['field_landing_page_component'] = TRUE;
+  }
   $config->set('hidden', $hidden);
 
   $config->save();
@@ -1115,6 +1124,9 @@ function tide_event_update_8027() {
   }
   if (!isset($hidden['field_event_cta_text'])) {
     $hidden['field_event_cta_text'] = TRUE;
+  }
+  if (!isset($hidden['field_landing_page_component'])) {
+    $hidden['field_landing_page_component'] = TRUE;
   }
   $config->set('hidden', $hidden);
 
