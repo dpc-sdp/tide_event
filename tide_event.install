@@ -59,6 +59,13 @@ function tide_event_install() {
     }
   }
 
+  tide_event_update_8016();
+  tide_event_update_8018();
+  tide_event_update_8019();
+  tide_event_update_8020();
+  tide_event_update_8021();
+  tide_event_update_8022();
+  tide_event_update_8023();
   tide_event_update_8024();
   tide_event_update_8025();
   tide_event_update_8026();
