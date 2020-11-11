@@ -61,7 +61,7 @@ Feature: Fields for Event content type
     And I should see an "input#edit-field-show-social-sharing-value" element
     And I should not see an "input#edit-field-show-social-sharing-value.required" element
 
-    And I should see text matching "External URL"
+    And I should see text matching "External Link"
     And I should see text matching "URL"
     And I should see an "input#edit-field-node-link-0-uri" element
     And I should not see an "input#edit-field-node-link-0-uri.required" element
