@@ -999,7 +999,6 @@ function tide_event_update_8025() {
   $config->set('content.url_redirects.weight', 11);
   $config->set('content.body.weight', 13);
   $config->set('content.field_show_social_sharing.weight', 15);
-  $config->set('content.field_landing_page_component.weight', 14);
 
   $content = $config->get('content');
   if (!isset($content['field_is_event_series'])) {
@@ -1025,7 +1024,33 @@ function tide_event_update_8025() {
       'region' => 'content',
     ];
   }
+  if (!isset($content['field_landing_page_component'])) {
+    $content['field_landing_page_component'] = [
+    'type' => 'preset_paragraphs',
+    'weight' => 14,
+    'region' => 'content',
+    'settings' => [
+      'preset_number' => '',
+      'title' => 'Paragraph',
+      'title_plural' => 'Paragraphs',
+      'edit_mode' => 'open',
+      'closed_mode' => 'summary',
+      'autocollapse' => 'none',
+      'closed_mode_threshold' => 0,
+      'add_mode' => 'dropdown',
+      'form_display_mode' => 'default',
+      'default_paragraph_type' => '',
+      'features' => [
+        'duplicate' => 'duplicate',
+        'collapse_edit_all' => 'collapse_edit_all',
+      ],
+    ],
+    'third_party_settings' => [],
+    ];
+  }
   $config->set('content', $content);
+
+  $config->set('content.field_landing_page_component.weight', 14);
 
   $config->save();
 }
