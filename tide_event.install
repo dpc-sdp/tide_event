@@ -693,7 +693,7 @@ function tide_event_update_8016() {
   $config->set('content.field_related_links.weight', 6);
   $config->set('content.field_show_related_content.weight', 5);
   $config->set('content.field_show_social_sharing.weight', 13);
-  $config->set('content.field_status.weight', 11);
+  $config->set('content.field_status.weight', 5);
   $config->set('content.moderation_state.weight', 12);
   $config->set('content.path.weight', 10);
   $config->set('content.promote.weight', 8);
@@ -806,9 +806,6 @@ function tide_event_update_8021() {
   }
   if (isset($content['field_show_related_content'])) {
     unset($content['field_show_related_content']);
-  }
-  if (isset($content['field_status'])) {
-    unset($content['field_status']);
   }
   if (isset($content['field_event_description'])) {
     unset($content['field_event_description']);
@@ -945,6 +942,9 @@ function tide_event_update_8025() {
   $group_page_header_children = $config->get('third_party_settings.field_group.group_page_header.children');
   if (!in_array('field_is_event_series', $group_page_header_children)) {
     $group_page_header_children[] = 'field_is_event_series';
+  }
+  if (!in_array('field_status', $group_page_header_children)) {
+    $group_page_header_children[] = 'field_status';
   }
   $config->set('third_party_settings.field_group.group_page_header.children', $group_page_header_children);
 
