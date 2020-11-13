@@ -8,7 +8,7 @@ id: node.event.field_is_event_series
 field_name: field_is_event_series
 entity_type: node
 bundle: event
-label: 'This event is a Series parent'
+label: 'This event is a series event'
 description: ''
 required: false
 translatable: false
