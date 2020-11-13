@@ -745,12 +745,6 @@ function tide_event_update_8021() {
   $config_factory = \Drupal::configFactory();
   $config = $config_factory->getEditable('core.entity_form_display.node.event.default');
 
-  $group_section_1_children = $config->get('third_party_settings.field_group.group_section_1.children');
-  if (($key = array_search('group_event_author', $group_section_1_children)) !== FALSE) {
-    unset($group_section_1_children[$key]);
-  }
-  $config->set('third_party_settings.field_group.group_section_1.children', $group_section_1_children);
-
   $group_page_header_children = $config->get('third_party_settings.field_group.group_page_header.children');
   if (($key = array_search('field_news_intro_text', $group_page_header_children)) !== FALSE) {
     unset($group_page_header_children[$key]);
@@ -794,10 +788,6 @@ function tide_event_update_8021() {
 
   $config->set('third_party_settings.field_group.group_related_links.region', 'hidden');
 
-  $config->set('third_party_settings.field_group.group_event_author.parent_name', '');
-  $config->set('third_party_settings.field_group.group_event_author.weight', 22);
-  $config->set('third_party_settings.field_group.group_event_author.region', 'hidden');
-
   $config->set('content.created.weight', 5);
 
   $content = $config->get('content');
@@ -809,15 +799,6 @@ function tide_event_update_8021() {
   }
   if (isset($content['field_news_intro_text'])) {
     unset($content['field_news_intro_text']);
-  }
-  if (isset($content['field_node_author'])) {
-    unset($content['field_node_author']);
-  }
-  if (isset($content['field_node_email'])) {
-    unset($content['field_node_email']);
-  }
-  if (isset($content['field_node_phone'])) {
-    unset($content['field_node_phone']);
   }
   if (isset($content['field_related_links'])) {
     unset($content['field_related_links']);
@@ -857,15 +838,6 @@ function tide_event_update_8021() {
   }
   if (!isset($hidden['field_news_intro_text'])) {
     $hidden['field_news_intro_text'] = TRUE;
-  }
-  if (!isset($hidden['field_node_author'])) {
-    $hidden['field_node_author'] = TRUE;
-  }
-  if (!isset($hidden['field_node_email'])) {
-    $hidden['field_node_email'] = TRUE;
-  }
-  if (!isset($hidden['field_node_phone'])) {
-    $hidden['field_node_phone'] = TRUE;
   }
   if (!isset($hidden['field_related_links'])) {
     $hidden['field_related_links'] = TRUE;
@@ -983,16 +955,9 @@ function tide_event_update_8025() {
   }
   $config->set('third_party_settings.field_group.group_external_link.children', $group_external_content_children);
 
-  $third_party_settings = $config->get('third_party_settings.field_group.group_body_content.children');
-  if (!in_array('field_landing_page_component', $third_party_settings)) {
-    $third_party_settings[] = 'field_landing_page_component';
-  }
-  $config->set('third_party_settings.field_group.group_body_content.children', $third_party_settings);
-
   $config->set('third_party_settings.field_group.group_right_column.weight', 25);
   $config->set('third_party_settings.field_group.group_body_content.weight', 9);
   $config->set('third_party_settings.field_group.group_social_sharing.weight', 23);
-  $config->set('third_party_settings.field_group.group_event_author.weight', 24);
 
   $config->set('content.created.weight', 7);
   $config->set('content.field_audience.weight', 7);
