@@ -876,7 +876,6 @@ function tide_event_update_8023() {
     'field.storage.node.field_event_cta_text' => 'field_storage_config',
     'field.storage.node.field_is_event_series' => 'field_storage_config',
     'field.storage.paragraph.field_date_not_applicable' => 'field_storage_config',
-    'field.storage.paragraph.field_event_availability' => 'field_storage_config',
     'field.storage.paragraph.field_paragraph_attendence_mode' => 'field_storage_config',
     'field.storage.paragraph.field_paragraph_event_capacity' => 'field_storage_config',
     'field.storage.paragraph.field_paragraph_event_duration' => 'field_storage_config',
@@ -885,7 +884,6 @@ function tide_event_update_8023() {
     'field.field.node.event.field_is_event_series' => 'field_config',
     'field.field.node.event.field_landing_page_component' => 'field_config',
     'field.field.paragraph.event_details.field_date_not_applicable' => 'field_config',
-    'field.field.paragraph.event_details.field_event_availability' => 'field_config',
     'field.field.paragraph.event_details.field_paragraph_attendence_mode' => 'field_config',
     'field.field.paragraph.event_details.field_paragraph_event_capacity' => 'field_config',
     'field.field.paragraph.event_details.field_paragraph_event_duration' => 'field_config',
@@ -1109,9 +1107,6 @@ function tide_event_update_8028() {
   if (!in_array('field.field.paragraph.event_details.field_date_not_applicable', $dependencies)) {
     $dependencies[] = 'field.field.paragraph.event_details.field_date_not_applicable';
   }
-  if (!in_array('field.field.paragraph.event_details.field_event_availability', $dependencies)) {
-    $dependencies[] = 'field.field.paragraph.event_details.field_event_availability';
-  }
   if (!in_array('field.field.paragraph.event_details.field_paragraph_attendence_mode', $dependencies)) {
     $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_attendence_mode';
   }
@@ -1135,19 +1130,6 @@ function tide_event_update_8028() {
       ],
       'third_party_settings' => [],
       'type' => 'boolean_checkbox',
-      'region' => 'content',
-    ];
-  }
-
-  if (!isset($content['field_event_availability'])) {
-    $content['field_event_availability'] = [
-      'weight' => 6,
-      'settings' => [
-        'size' => 60,
-        'placeholder' => '',
-      ],
-      'third_party_settings' => [],
-      'type' => 'string_textfield',
       'region' => 'content',
     ];
   }
@@ -1268,9 +1250,6 @@ function tide_event_update_8029() {
   if (!in_array('field.field.paragraph.event_details.field_date_not_applicable', $dependencies)) {
     $dependencies[] = 'field.field.paragraph.event_details.field_date_not_applicable';
   }
-  if (!in_array('field.field.paragraph.event_details.field_event_availability', $dependencies)) {
-    $dependencies[] = 'field.field.paragraph.event_details.field_event_availability';
-  }
   if (!in_array('field.field.paragraph.event_details.field_paragraph_attendence_mode', $dependencies)) {
     $dependencies[] = 'field.field.paragraph.event_details.field_paragraph_attendence_mode';
   }
@@ -1303,19 +1282,6 @@ function tide_event_update_8029() {
       ],
       'third_party_settings' => [],
       'type' => 'boolean',
-      'region' => 'content',
-    ];
-  }
-
-  if (!isset($content['field_event_availability'])) {
-    $content['field_event_availability'] = [
-      'weight' => 10,
-      'label' => 'above',
-      'settings' => [
-        'link_to_entity' => FALSE,
-      ],
-      'third_party_settings' => [],
-      'type' => 'string',
       'region' => 'content',
     ];
   }
@@ -1371,6 +1337,17 @@ function tide_event_update_8029() {
   }
 
   $config->set('content', $content);
+
+  $config->save();
+}
+
+/**
+ * Display updates to event availability.
+ */
+function tide_event_update_8030() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('field.field.node.event.field_status');
+  $config->set('label', 'Availability');
 
   $config->save();
 }

@@ -65,7 +65,6 @@ config_devel:
     - field.field.node.event.field_is_event_series
     - field.field.node.event.field_landing_page_component
     - field.field.paragraph.event_details.field_date_not_applicable
-    - field.field.paragraph.event_details.field_event_availability
     - field.field.paragraph.event_details.field_paragraph_attendence_mode
     - field.field.paragraph.event_details.field_paragraph_event_capacity
     - field.field.paragraph.event_details.field_paragraph_event_duration
@@ -73,7 +72,6 @@ config_devel:
     - field.storage.node.field_event_cta_text
     - field.storage.node.field_is_event_series
     - field.storage.paragraph.field_date_not_applicable
-    - field.storage.paragraph.field_event_availability
     - field.storage.paragraph.field_paragraph_attendence_mode
     - field.storage.paragraph.field_paragraph_event_capacity
     - field.storage.paragraph.field_paragraph_event_duration
