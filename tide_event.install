@@ -72,6 +72,7 @@ function tide_event_install() {
   tide_event_update_8027();
   tide_event_update_8028();
   tide_event_update_8029();
+  tide_event_update_8030();
 }
 
 /**
