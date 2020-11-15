@@ -948,6 +948,12 @@ function tide_event_update_8025() {
   }
   $config->set('third_party_settings.field_group.group_page_header.children', $group_page_header_children);
 
+  $group_body_content_children = $config->get('third_party_settings.field_group.group_body_content.children');
+  if (!in_array('field_landing_page_component', $group_body_content_children)) {
+    $group_body_content_children[] = 'field_landing_page_component';
+  }
+  $config->set('third_party_settings.field_group.group_body_content.children', $group_body_content_children);
+
   $group_external_content_children = $config->get('third_party_settings.field_group.group_external_link.children');
   if (!in_array('field_event_cta_text', $group_external_content_children)) {
     $group_external_content_children[] = 'field_event_cta_text';

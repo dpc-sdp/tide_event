@@ -8,8 +8,8 @@ id: node.event.field_status
 field_name: field_status
 entity_type: node
 bundle: event
-label: Status
-description: 'Use Status to display event frequency. Displays under the title on the Event Cards. Content limited to 44 characters.'
+label: Availability
+description: 'Use Availability to display event frequency. Displays under the title on the Event Cards. Content limited to 44 characters.'
 required: false
 translatable: false
 default_value: {  }
