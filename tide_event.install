@@ -1349,6 +1349,7 @@ function tide_event_update_8030() {
   $config_factory = \Drupal::configFactory();
   $config = $config_factory->getEditable('field.field.node.event.field_status');
   $config->set('label', 'Availability');
+  $config->set('description', 'Use Availability to display event frequency. Displays under the title on the Event Cards. Content limited to 44 characters.');
 
   $config->save();
 }
