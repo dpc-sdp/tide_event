@@ -1034,6 +1034,7 @@ function tide_event_update_8025() {
   $config->set('content', $content);
 
   $config->set('content.field_landing_page_component.weight', 14);
+  $config->set('content.field_status.weight', 4);
 
   $config->save();
 }
