@@ -72,9 +72,6 @@ settings:
       event_details:
         enabled: true
         weight: 40
-      featured_news:
-        weight: 41
-        enabled: false
       keydates:
         weight: 42
         enabled: false
