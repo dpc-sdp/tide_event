@@ -46,6 +46,7 @@ function tide_event_install() {
     $bundles = $config->get('bundles');
     if ($bundles) {
       foreach ($bundles as $bundle) {
+        $enabled_bundles = [];
         $enabled_bundles[] = $bundle['bundle'];
       }
       if (!in_array('event', $enabled_bundles)) {
@@ -412,6 +413,7 @@ function tide_event_update_8009() {
     $bundles = $config->get('bundles');
     if ($bundles) {
       foreach ($bundles as $bundle) {
+        $enabled_bundles = [];
         $enabled_bundles[] = $bundle['bundle'];
       }
       if (!in_array('event', $enabled_bundles)) {
