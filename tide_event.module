@@ -64,7 +64,7 @@ function tide_event_search_api_index_items_alter(IndexInterface $index, array &$
     }
 
     // Add the Link field path.
-    // TODO: Consider a check for all site aliases
+    // @todo Consider a check for all site aliases
     // `tide_site.module:tide_site_search_api_index_items_alter`.
     // This should be redundant if we move to consolidating all index alters to
     // a processor.
@@ -164,6 +164,7 @@ function tide_event_webform_submission_presave($submission) {
     $event_details = Paragraph::create($event_details_data);
     $event_details->save();
 
+    $node_data = [];
     $node_data['field_event_details'] = [
       [
         'target_id' => $event_details->id(),
