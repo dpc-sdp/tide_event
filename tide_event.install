@@ -260,7 +260,7 @@ function tide_event_update_8001() {
 function tide_event_update_8002() {
   // First import Event Author role configuration.
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+  $config_location = [\Drupal::service('extension.list.module')->getPath('tide_event') . '/config/install'];
   _tide_import_single_config('user.role.event_author', $config_location);
 
   // Create new Event Author user.
@@ -294,7 +294,7 @@ function tide_event_update_8002() {
  */
 function tide_event_update_8003() {
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+  $config_location = [\Drupal::service('extension.list.module')->getPath('tide_event') . '/config/install'];
   _tide_import_single_config('webform.webform.tide_event_submission', $config_location);
 }
 
@@ -303,7 +303,7 @@ function tide_event_update_8003() {
  */
 function tide_event_update_8004() {
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+  $config_location = [\Drupal::service('extension.list.module')->getPath('tide_event') . '/config/install'];
   _tide_import_single_config('field.field.node.event.field_show_related_content', $config_location);
   _tide_import_single_config('core.entity_form_display.node.event.default', $config_location);
   _tide_import_single_config('core.entity_view_display.node.event.default', $config_location);
@@ -352,7 +352,7 @@ function tide_event_update_8006() {
  */
 function tide_event_update_8007() {
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+  $config_location = [\Drupal::service('extension.list.module')->getPath('tide_event') . '/config/install'];
   _tide_import_single_config('field.storage.paragraph.field_show_time', $config_location);
   _tide_import_single_config('field.field.paragraph.event_details.field_show_time', $config_location);
   _tide_import_single_config('core.entity_form_display.paragraph.event_details.default', $config_location);
@@ -438,7 +438,7 @@ function tide_event_update_8010() {
   ];
 
   module_load_include('inc', 'tide_core', 'includes/helpers');
-  $config_location = [drupal_get_path('module', 'tide_event') . '/config/install'];
+  $config_location = [\Drupal::service('extension.list.module')->getPath('tide_event') . '/config/install'];
 
   // Check if field already exported to config/sync.
   foreach ($configs as $config => $type) {
