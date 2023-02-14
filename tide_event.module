@@ -79,7 +79,7 @@ function tide_event_search_api_index_items_alter(IndexInterface $index, array &$
       $path = Url::fromUri($uri)->toString();
     }
 
-    if ($path) {
+    if (isset($path)) {
       $field_link->setValues([$path]);
       $item->setField('field_paragraph_link', $field_link);
     }
