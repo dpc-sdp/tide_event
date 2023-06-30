@@ -1,0 +1,23 @@
+view scheduled transitions node event:
+  title: "View scheduled transitions for Content:Event entities"
+  description: "View scheduled transitions for Content:Event entities"
+
+add scheduled transitions node event:
+  title: "Add scheduled transitions for Content:Event entities"
+  description: "Add scheduled transitions for Content:Event entities"
+
+access jsonapi resource list:
+  title: "access jsonapi resource list"
+  description: "access jsonapi resource list"
+
+use draft_needs_review transition:
+  title: "use draft_needs_review transition"
+  description: "use draft_needs_review transition"
+
+use needs_review_draft transition:
+  title: "use needs_review_draft transition"
+  description: "use needs_review_draft transition"
+
+use needs_review_needs_review transition:
+  title: "use needs_review_needs_review transition"
+  description: "use needs_review_needs_review transition"
