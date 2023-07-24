@@ -5,7 +5,7 @@
  * Install file.
  */
 
-use Drupal\tide_grant\TideEventOperation;
+use Drupal\tide_event\TideEventOperation;
 
 /**
  * Implements hook_install().
