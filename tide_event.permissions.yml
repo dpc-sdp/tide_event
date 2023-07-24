@@ -6,10 +6,6 @@
   title: 'Add scheduled transitions for Content:Event entities'
   description: 'Add scheduled transitions for Content:Event entities'
 
-'access jsonapi resource list':
-  title: 'access jsonapi resource list'
-  description: 'access jsonapi resource list.'
-
 'clone event content':
   title: 'Clone event content'
   description: 'Allows user to clone event content.'
