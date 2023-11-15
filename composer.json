@@ -1,5 +1,5 @@
 {
-  "description": "Event content type and related configuration for Tide Drupal 8 distribution",
+  "description": "Event content type and related configuration for Tide Drupal 10 distribution",
   "extra": {
     "composer-exit-on-patch-failure": true,
     "enable-patching": true,
@@ -10,16 +10,14 @@
   "repositories": {
     "drupal": {
       "type": "composer",
-      "url": "https://packages.drupal.org/8"
+      "url": "https://packages.drupal.org/10"
     }
   },
   "require": {
+    "dpc-sdp/tide_api": "dev-reference",
     "dpc-sdp/tide_core": "dev-reference",
     "dpc-sdp/tide_media": "dev-reference",
     "dpc-sdp/tide_webform": "dev-reference"
-  },
-  "suggest": {
-    "dpc-sdp/tide_api:^3.0.0": "Allows to use Drupal in headless mode"
   },
   "type": "drupal-module"
 }
