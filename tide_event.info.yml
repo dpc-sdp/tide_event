@@ -2,11 +2,12 @@ name: Tide Event
 description: 'Provides Event content type and related configuration. '
 type: module
 package: Tide
-core_version_requirement: ^8.9 || ^9
+core_version_requirement: ^9.5 || ^10
 dependencies:
   - drupal:datetime_range
   - drupal:menu_ui
   - drupal:webform
+  - dpc-sdp:tide_api
   - dpc-sdp:tide_core
   - dpc-sdp:tide_media
   - dpc-sdp:tide_webform

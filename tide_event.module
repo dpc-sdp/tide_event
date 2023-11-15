@@ -5,15 +5,15 @@
  * Tide Event module functionality.
  */
 
-use Drupal\node\Entity\Node;
-use Drupal\smart_trim\Truncate\TruncateHTML;
-use Drupal\search_api\IndexInterface;
-use Drupal\user\Entity\Role;
-use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\workflows\Entity\Workflow;
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\search_api\IndexInterface;
+use Drupal\smart_trim\TruncateHTML;
+use Drupal\user\Entity\Role;
+use Drupal\workflows\Entity\Workflow;
 
 /**
  * Implements hook_entity_bundle_create().
