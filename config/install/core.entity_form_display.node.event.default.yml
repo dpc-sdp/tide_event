@@ -5,6 +5,7 @@ dependencies:
     - entity_browser.browser.tide_image_browser
     - field.field.node.event.body
     - field.field.node.event.field_audience
+    - field.field.node.event.field_content_category
     - field.field.node.event.field_event_category
     - field.field.node.event.field_event_description
     - field.field.node.event.field_event_details
@@ -36,6 +37,7 @@ dependencies:
     - path
     - telephone
     - text
+    - term_reference_tree
 third_party_settings:
   field_group:
     group_section_1:
@@ -200,6 +202,17 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_content_category:
+    type: term_reference_tree
+    weight: 4
+    region: content
+    settings:
+      start_minimized: true
+      leaves_only: true
+      select_parents: false
+      cascading_selection: 0
+      max_depth: 0
+    third_party_settings: {  }
   field_event_description:
     weight: 5
     settings:
