@@ -2,10 +2,6 @@
   title: 'Add scheduled transitions for node event'
   description: 'Allows user to add scheduled transitions for event content type.'
 
-'add scheduled transitions node event':
-  title: 'Add scheduled transitions for Content:Event entities'
-  description: 'Add scheduled transitions for Content:Event entities'
-
 'clone event content':
   title: 'Clone event content'
   description: 'Allows user to clone event content.'
